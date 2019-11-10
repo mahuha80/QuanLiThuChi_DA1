@@ -1,4 +1,4 @@
-package com.example.duan1_vinh.ui.CaiDat;
+package com.example.duan1_vinh.ui.ThongKeChiTiet;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.duan1_vinh.R;
 
-public class ToolsFragment extends Fragment {
+public class ThongKeChiTietFragment extends Fragment {
 
-    private ToolsViewModel toolsViewModel;
+    private ThongKeChiTietViewModel thongKeChiTietViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        toolsViewModel =
-                ViewModelProviders.of(this).get(ToolsViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_tools, container, false);
-        final TextView textView = root.findViewById(R.id.text_tools);
-        toolsViewModel.getText().observe(this, new Observer<String>() {
+        thongKeChiTietViewModel =
+                ViewModelProviders.of(this).get(ThongKeChiTietViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_share, container, false);
+        final TextView textView = root.findViewById(R.id.text_share);
+        thongKeChiTietViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

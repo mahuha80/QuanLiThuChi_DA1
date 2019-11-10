@@ -15,7 +15,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.duan1_vinh.R;
 import com.google.android.material.tabs.TabLayout;
 
-public class HomeFragment extends Fragment {
+public class ThongKeFragment extends Fragment {
     ViewPager viewPager;
     TabLayout tabLayout;
     Context context;

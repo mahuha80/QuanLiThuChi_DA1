@@ -1,4 +1,4 @@
-package com.example.duan1_vinh.ui.ThongKeChiTiet;
+package com.example.duan1_vinh.ui.ThemKhoanChi;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.duan1_vinh.R;
 
-public class ShareFragment extends Fragment {
+public class KhoanChiFragment extends Fragment {
 
-    private ShareViewModel shareViewModel;
+    private KhoanChiViewModel khoanChiViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        shareViewModel =
-                ViewModelProviders.of(this).get(ShareViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_share, container, false);
-        final TextView textView = root.findViewById(R.id.text_share);
-        shareViewModel.getText().observe(this, new Observer<String>() {
+        khoanChiViewModel =
+                ViewModelProviders.of(this).get(KhoanChiViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
+        final TextView textView = root.findViewById(R.id.text_slideshow);
+        khoanChiViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

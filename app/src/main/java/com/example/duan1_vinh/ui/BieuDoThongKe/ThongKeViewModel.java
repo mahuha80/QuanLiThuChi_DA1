@@ -1,16 +1,16 @@
-package com.example.duan1_vinh.ui.ThongKeChiTiet;
+package com.example.duan1_vinh.ui.BieuDoThongKe;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class ShareViewModel extends ViewModel {
+public class ThongKeViewModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public ShareViewModel() {
+    public ThongKeViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is share fragment");
+        mText.setValue("This is home fragment");
     }
 
     public LiveData<String> getText() {

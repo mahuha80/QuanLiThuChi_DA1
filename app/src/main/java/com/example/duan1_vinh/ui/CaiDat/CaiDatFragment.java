@@ -1,4 +1,4 @@
-package com.example.duan1_vinh.ui.VeChungToi;
+package com.example.duan1_vinh.ui.CaiDat;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.duan1_vinh.R;
 
-public class SendFragment extends Fragment {
+public class CaiDatFragment extends Fragment {
 
-    private SendViewModel sendViewModel;
+    private CaiDatViewModel caiDatViewModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        sendViewModel =
-                ViewModelProviders.of(this).get(SendViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_send, container, false);
-        final TextView textView = root.findViewById(R.id.text_send);
-        sendViewModel.getText().observe(this, new Observer<String>() {
+        caiDatViewModel =
+                ViewModelProviders.of(this).get(CaiDatViewModel.class);
+        View root = inflater.inflate(R.layout.fragment_tools, container, false);
+        final TextView textView = root.findViewById(R.id.text_tools);
+        caiDatViewModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);

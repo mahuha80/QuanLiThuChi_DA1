@@ -1,4 +1,4 @@
-package com.example.duan1_vinh.ui.ThemKhoanThu;
+package com.example.duan1_vinh.ui.VeChungToi;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,17 +14,17 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.duan1_vinh.R;
 
-public class GalleryFragment extends Fragment {
+public class VeChungToiFragment extends Fragment {
 
-    private GalleryViewModel galleryViewModel;
+    private VeChungToiModel veChungToiModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        galleryViewModel =
-                ViewModelProviders.of(this).get(GalleryViewModel.class);
-        View root = inflater.inflate(R.layout.fragment_gallery, container, false);
-        final TextView textView = root.findViewById(R.id.text_gallery);
-        galleryViewModel.getText().observe(this, new Observer<String>() {
+        veChungToiModel =
+                ViewModelProviders.of(this).get(VeChungToiModel.class);
+        View root = inflater.inflate(R.layout.fragment_send, container, false);
+        final TextView textView = root.findViewById(R.id.text_send);
+        veChungToiModel.getText().observe(this, new Observer<String>() {
             @Override
             public void onChanged(@Nullable String s) {
                 textView.setText(s);
