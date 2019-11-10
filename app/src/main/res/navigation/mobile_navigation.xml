@@ -30,6 +30,11 @@
         tools:layout="@layout/fragment_tools" />
 
     <fragment
+        android:id="@+id/nav_branch"
+        android:name="com.example.duan1_vinh.ui.QuanLyNhom.QuanLyFragment"
+        android:label="@string/menu_branch"
+        tools:layout="@layout/fragment_tools" />
+    <fragment
         android:id="@+id/nav_share"
         android:name="com.example.duan1_vinh.ui.ThongKeChiTiet.ThongKeChiTietFragment"
         android:label="@string/menu_share"

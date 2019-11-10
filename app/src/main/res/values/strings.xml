@@ -13,5 +13,6 @@
     <string name="menu_slideshow">Thêm khoản chi</string>
     <string name="menu_tools">Thống kê chi tiết</string>
     <string name="menu_share">Cài đặt</string>
-    <string name="menu_send">Về Chúng tôi</string>
+    <string name="menu_send">Về chúng tôi</string>
+    <string name="menu_branch">Quản lí nhóm</string>
 </resources>
