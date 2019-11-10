@@ -2,14 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
-
-    <com.google.android.material.tabs.TabLayout
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:id="@+id/tl_fragment_quanlinhom">
-    </com.google.android.material.tabs.TabLayout>
-    <androidx.viewpager.widget.ViewPager
+    <ListView
+        android:id="@+id/lv_chitieufragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/vp_quanlinhom"/>
+        android:cacheColorHint="#00000000"
+        android:drawSelectorOnTop="false"
+        android:layout_weight="9"/>
+
 </LinearLayout>

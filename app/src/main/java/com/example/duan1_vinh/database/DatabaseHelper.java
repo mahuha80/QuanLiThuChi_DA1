@@ -6,14 +6,16 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.example.duan1_vinh.dao.LoaiChiDAO;
+
 public class DatabaseHelper extends SQLiteOpenHelper {
     public DatabaseHelper(@Nullable Context context) {
-        super(context, "QLTCdb", null, 1);
+        super(context, "QuanLyThuChidb", null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-
+        db.execSQL(LoaiChiDAO.CREATE_TABLE);
     }
 
     @Override
