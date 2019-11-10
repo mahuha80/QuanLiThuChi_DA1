@@ -1,4 +1,4 @@
-package com.example.duan1_vinh.ui.slideshow;
+package com.example.duan1_vinh.ui.ThemKhoanChi;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

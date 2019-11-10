@@ -1,4 +1,4 @@
-package com.example.duan1_vinh.ui.home;
+package com.example.duan1_vinh.ui.BieuDoThongKe;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.duan1_vinh.R;
 
-public class ThongKeHomNayFragment extends Fragment {
+public class ThongKeTheoThangFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

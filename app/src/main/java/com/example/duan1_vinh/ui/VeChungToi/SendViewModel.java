@@ -1,4 +1,4 @@
-package com.example.duan1_vinh.ui.send;
+package com.example.duan1_vinh.ui.VeChungToi;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

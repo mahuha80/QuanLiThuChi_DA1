@@ -1,4 +1,4 @@
-package com.example.duan1_vinh.ui.share;
+package com.example.duan1_vinh.ui.ThongKeChiTiet;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

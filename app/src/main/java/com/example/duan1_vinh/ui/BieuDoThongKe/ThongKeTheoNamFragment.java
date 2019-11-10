@@ -1,4 +1,4 @@
-package com.example.duan1_vinh.ui.home;
+package com.example.duan1_vinh.ui.BieuDoThongKe;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
