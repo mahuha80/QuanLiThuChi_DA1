@@ -1,4 +1,4 @@
-package com.example.duan1_vinh.ui.QuanLyNhom;
+package com.example.duan1_vinh.ui.FragmentPagerAdapter;
 
 import android.view.View;
 
@@ -9,6 +9,9 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.PagerAdapter;
+
+import com.example.duan1_vinh.ui.QuanLyNhom.ChiTieuFragment;
+import com.example.duan1_vinh.ui.QuanLyNhom.ThuNhapFragment;
 
 public class QuanLyNhomPagerAdapter extends FragmentStatePagerAdapter {
     public QuanLyNhomPagerAdapter(@NonNull FragmentManager fm) {

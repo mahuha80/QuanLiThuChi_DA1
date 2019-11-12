@@ -15,4 +15,31 @@
     <string name="menu_share">Cài đặt</string>
     <string name="menu_send">Về chúng tôi</string>
     <string name="menu_branch">Quản lí nhóm</string>
+    <array name="list">
+        <item>hinhmot</item>
+        <item>hinhhai</item>
+        <item>hinhba</item>
+        <item>hinhbon</item>
+        <item>hinhnam</item>
+        <item>hinhsau</item>
+        <item>hinhbay</item>
+        <item>hinhtam</item>
+        <item>hinhchin</item>
+        <item>hinhmuoi</item>
+        <item>hinhmuoimot</item>
+        <item>hinhmuoihai</item>
+        <item>hinhmuoiba</item>
+        <item>hinhmuoibon</item>
+        <item>hinhmuoinam</item>
+        <item>hinhmuoisau</item>
+        <item>hinhmuoibay</item>
+        <item>hinhmuoitam</item>
+        <item>hinhmuoichin</item>
+        <item>hinhhaimuoi</item>
+        <item>hinhhaimot</item>
+        <item>hinhhaihai</item>
+        <item>hinhhaiba</item>
+        <item>hinhhaitu</item>
+
+    </array>
 </resources>

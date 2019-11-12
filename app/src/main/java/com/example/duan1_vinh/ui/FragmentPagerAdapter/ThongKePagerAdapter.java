@@ -1,4 +1,4 @@
-package com.example.duan1_vinh.ui.BieuDoThongKe;
+package com.example.duan1_vinh.ui.FragmentPagerAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -6,6 +6,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+
+import com.example.duan1_vinh.ui.BieuDoThongKe.ThongKeHomNayFragment;
+import com.example.duan1_vinh.ui.BieuDoThongKe.ThongKeTheoNamFragment;
+import com.example.duan1_vinh.ui.BieuDoThongKe.ThongKeTheoThangFragment;
 
 public class ThongKePagerAdapter extends FragmentStatePagerAdapter {
     public ThongKePagerAdapter(@NonNull FragmentManager fm) {
