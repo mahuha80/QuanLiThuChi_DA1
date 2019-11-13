@@ -9,7 +9,7 @@ public class LoaiChiDAO {
     DatabaseHelper databaseHelper;
     private Context context;
     SQLiteDatabase sqLiteDatabase;
-    public static final String CREATE_TABLE = "CREATE TABLE LoaiChiTB (id integer primarykey autoincrement,tenloaichi text,anh blob)";
+    public static final String CREATE_TABLE = "CREATE TABLE LoaiChiTB (id integer primarykey autoincrement,tenloaichi text,vitrianh int)";
 
     public LoaiChiDAO(Context context) {
         this.context=context;

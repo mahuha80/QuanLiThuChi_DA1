@@ -49,14 +49,9 @@ public class QuanLyFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
         quanLyNhomPagerAdapter=new QuanLyNhomPagerAdapter(getActivity().getSupportFragmentManager());
         viewPager.setAdapter(quanLyNhomPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
+
     }
 }

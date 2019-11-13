@@ -17,6 +17,8 @@ import com.example.duan1_vinh.R;
 
 public class ColorFragment extends Fragment {
     TableLayout tableLayout;
+    boolean isSelected=false;
+    static int idhinhselect=0;
 
     @Nullable
     @Override
@@ -36,7 +38,7 @@ public class ColorFragment extends Fragment {
             for(int j=0;j<col;j++){
                 ImageView imageView=new ImageView(getActivity().getApplicationContext());
                 final int vitri=col*i+j;
-                int idhinh=getResources().getIdentifier(MainActivity.arrayImg.get(vitri),"drawable",getActivity().getPackageName());
+                final int idhinh=getResources().getIdentifier(MainActivity.arrayImg.get(vitri),"drawable",getActivity().getPackageName());
                 imageView.setImageResource(idhinh);
                 tableRow.addView(imageView);
                 imageView.setPadding(66,16,16,16);
@@ -44,7 +46,8 @@ public class ColorFragment extends Fragment {
                 imageView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Toast.makeText(getActivity().getApplicationContext(), vitri+"", Toast.LENGTH_SHORT).show();
+                        isSelected=true;
+                        idhinhselect=vitri;
                     }
                 });
             }
