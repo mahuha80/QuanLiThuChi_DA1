@@ -17,7 +17,7 @@ import com.example.duan1_vinh.R;
 
 public class ColorFragment extends Fragment {
     TableLayout tableLayout;
-    boolean isSelected=false;
+    static boolean isSelected=false;
     static int idhinhselect=0;
 
     @Nullable

@@ -38,14 +38,17 @@
             android:layout_height="60dp"
             android:hint="Nhập tên nhóm"
             android:padding="16dp"
-            android:textSize="24sp" />
+            android:textSize="24sp"
+            android:outlineSpotShadowColor="#0A0E63"/>
     </LinearLayout>
 
     <com.google.android.material.tabs.TabLayout
-        android:layout_width="match_parent"
+        android:layout_width="60dp"
         android:layout_height="10dp"
         android:layout_marginBottom="8dp"
-        android:id="@+id/tl_themnhom_activity">
+        android:id="@+id/tl_themnhom_activity"
+        android:layout_gravity="center"
+        app:tabIndicatorColor="#ff0000">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"

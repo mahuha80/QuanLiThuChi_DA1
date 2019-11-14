@@ -42,4 +42,59 @@
         <item>hinhhaitu</item>
 
     </array>
+
+   <array name="iconp">
+       <item>hinhicon0</item>
+       <item>hinhicon1</item>
+       <item>hinhicon2</item>
+       <item>hinhicon3</item>
+       <item>hinhicon4</item>
+       <item>hinhicon5</item>
+       <item>hinhicon6</item>
+       <item>hinhicon7</item>
+       <item>hinhicon8</item>
+       <item>hinhicon9</item>
+       <item>hinhicon10</item>
+       <item>hinhicon11</item>
+       <item>hinhicon12</item>
+       <item>hinhicon13</item>
+       <item>hinhicon14</item>
+       <item>hinhicon15</item>
+       <item>hinhicon16</item>
+       <item>hinhicon17</item>
+       <item>hinhicon18</item>
+       <item>hinhicon19</item>
+       <item>hinhicon20</item>
+       <item>hinhicon21</item>
+       <item>hinhicon22</item>
+       <item>hinhicon23</item>
+       <item>hinhicon24</item>
+       <item>hinhicon25</item>
+       <item>hinhicon26</item>
+       <item>hinhicon27</item>
+       <item>hinhicon28</item>
+       <item>hinhicon29</item>
+       <item>hinhicon30</item>
+       <item>hinhicon31</item>
+       <item>hinhicon32</item>
+       <item>hinhicon33</item>
+       <item>hinhicon34</item>
+       <item>hinhicon35</item>
+       <item>hinhicon36</item>
+       <item>hinhicon37</item>
+       <item>hinhicon38</item>
+       <item>hinhicon39</item>
+       <item>hinhicon40</item>
+       <item>hinhicon41</item>
+       <item>hinhicon42</item>
+       <item>hinhicon43</item>
+       <item>hinhicon44</item>
+       <item>hinhicon45</item>
+       <item>hinhicon46</item>
+       <item>hinhicon47</item>
+       <item>hinhicon48</item>
+       <item>hinhicon49</item>
+
+   </array>
+
 </resources>

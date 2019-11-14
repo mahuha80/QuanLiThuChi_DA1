@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     public static ArrayList<String> arrayImg;
+    public static ArrayList<String> arrayIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +38,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        String[] mangten=getResources().getStringArray(R.array.list);
-        arrayImg=new ArrayList<>(Arrays.asList(mangten));
+        String[] tenColor=getResources().getStringArray(R.array.list);
+        String[] tenIcon=getResources().getStringArray(R.array.iconp);
+        arrayImg=new ArrayList<>(Arrays.asList(tenColor));
+        arrayIcon=new ArrayList<>(Arrays.asList(tenIcon));
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         mAppBarConfiguration = new AppBarConfiguration.Builder(
