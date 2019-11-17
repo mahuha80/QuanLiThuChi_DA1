@@ -1,10 +1,12 @@
 package com.example.duan1_vinh.ui;
 
+import android.annotation.SuppressLint;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.Toast;
@@ -15,10 +17,14 @@ import androidx.fragment.app.Fragment;
 
 import com.example.duan1_vinh.R;
 
+import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class ColorFragment extends Fragment {
     TableLayout tableLayout;
-    static boolean isSelected=false;
-    static int idhinhselect=0;
+    boolean isSelected=false;
+    ArrayList<CircleImageView> circleImageViewArrayList=new ArrayList<>();
 
     @Nullable
     @Override
@@ -36,20 +42,32 @@ public class ColorFragment extends Fragment {
         for(int i=0;i<row;i++){
             TableRow tableRow=new TableRow(getActivity().getApplicationContext());
             for(int j=0;j<col;j++){
-                ImageView imageView=new ImageView(getActivity().getApplicationContext());
-                final int vitri=col*i+j;
-                final int idhinh=getResources().getIdentifier(MainActivity.arrayImg.get(vitri),"drawable",getActivity().getPackageName());
-                imageView.setImageResource(idhinh);
-                tableRow.addView(imageView);
-                imageView.setPadding(66,16,16,16);
-
-                imageView.setOnClickListener(new View.OnClickListener() {
+                final CircleImageView circleImageView=new CircleImageView(getActivity().getApplicationContext());
+                final int vitricolor=col*i+j;
+                final int idhinhcolor=getResources().getIdentifier(MainActivity.arrayImg.get(vitricolor),"drawable",getActivity().getPackageName());
+                circleImageView.setImageResource(idhinhcolor);
+                circleImageView.setOnClickListener(new View.OnClickListener() {
+                    @SuppressLint("ResourceAsColor")
                     @Override
                     public void onClick(View v) {
+                        if(isSelected){
+                            for(int i=0;i<circleImageViewArrayList.size();i++){
+                                circleImageViewArrayList.get(i).setBorderWidth(0);
+                            }
+                        }
                         isSelected=true;
-                        idhinhselect=vitri;
+                        circleImageView.setBorderColor(getResources().getColor(R.color.orange));
+                        circleImageView.setBorderWidth(10);
+                        circleImageView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+                        isSelected = true;
+                        ColorDrawable colorDrawable= (ColorDrawable) circleImageView.getBackground();
+                        Toast.makeText(getActivity().getApplicationContext(), colorDrawable.getColor()+"", Toast.LENGTH_SHORT).show();
+
                     }
                 });
+                tableRow.addView(circleImageView);
+                circleImageView.setPadding(66,16,16,16);
+                circleImageViewArrayList.add(circleImageView);
             }
 
             tableLayout.addView(tableRow);

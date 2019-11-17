@@ -40,11 +40,11 @@ public class ThemNhomActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.done:
-                   Intent intent = new Intent();
-                   intent.putExtra("idhinhselect", ColorFragment.idhinhselect+"");
-                   setResult(RESULT_OK,intent);
-                   finish();
-                   break;
+//                   Intent intent = new Intent();
+//                   intent.putExtra("idhinhselect", ColorFragment.idhinhselect+"");
+//                   setResult(RESULT_OK,intent);
+//                   finish();
+//                   break;
 
 
         }

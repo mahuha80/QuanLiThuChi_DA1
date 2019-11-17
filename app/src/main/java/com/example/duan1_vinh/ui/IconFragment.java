@@ -1,5 +1,6 @@
 package com.example.duan1_vinh.ui;
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,10 +17,14 @@ import androidx.fragment.app.Fragment;
 
 import com.example.duan1_vinh.R;
 
+import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class IconFragment extends Fragment {
-    static boolean isSelected = false;
-    static int idhinhselect = -1;
     TableLayout tableLayout;
+    boolean isChecked = false;
+    ArrayList<CircleImageView> circleImageViewArrayList = new ArrayList<>();
 
     @Nullable
     @Override
@@ -37,26 +42,32 @@ public class IconFragment extends Fragment {
         for (int i = 0; i < row; i++) {
             TableRow tableRow = new TableRow(getActivity().getApplicationContext());
             for (int j = 0; j < col; j++) {
-                ImageView imageView = new ImageView(getActivity().getApplicationContext());
-                final int vitri = col * i + j;
-                final int idhinh = getResources().getIdentifier(MainActivity.arrayIcon.get(vitri), "drawable", getActivity().getPackageName());
-                imageView.setImageResource(idhinh);
-                imageView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(getActivity(), vitri+"", Toast.LENGTH_SHORT).show();
-                    }
-                });
-                tableRow.addView(imageView);
-                imageView.setPadding(66, 16, 16, 16);
+//                ImageView imageView = new ImageView(getActivity().getApplicationContext());
+                final CircleImageView circleImageView = new CircleImageView(getActivity().getApplicationContext());
+                final int vitriicon = col * i + j;
+                final int idhinhicon = getResources().getIdentifier(MainActivity.arrayIcon.get(vitriicon), "drawable", getActivity().getPackageName());
+                circleImageView.setImageResource(idhinhicon);
 
-                imageView.setOnClickListener(new View.OnClickListener() {
+                circleImageView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        isSelected = true;
-                        idhinhselect = vitri;
+                        if (isChecked) {
+                            for(int i=0;i<circleImageViewArrayList.size();i++){
+                                circleImageViewArrayList.get(i).setBorderWidth(0);
+                            }
+                        }
+                        circleImageView.setBorderColor(getResources().getColor(R.color.design_default_color_primary));
+                        circleImageView.setBorderWidth(10);
+                        circleImageView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
+                        isChecked = true;
+
+
                     }
                 });
+                tableRow.addView(circleImageView);
+                circleImageView.setPadding(66, 16, 16, 16);
+                circleImageViewArrayList.add(circleImageView);
+
             }
 
             tableLayout.addView(tableRow);
