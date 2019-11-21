@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.duan1_vinh.R;
 import com.example.duan1_vinh.ui.FragmentPagerAdapter.ThongKePagerAdapter;
+import com.example.duan1_vinh.ui.MainActivity;
 import com.google.android.material.tabs.TabLayout;
 
 public class ThongKeFragment extends Fragment {

@@ -1,15 +1,11 @@
 package com.example.duan1_vinh.ui;
 
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -45,7 +41,7 @@ public class IconFragment extends Fragment {
 //                ImageView imageView = new ImageView(getActivity().getApplicationContext());
                 final CircleImageView circleImageView = new CircleImageView(getActivity().getApplicationContext());
                 final int vitriicon = col * i + j;
-                final int idhinhicon = getResources().getIdentifier(MainActivity.arrayIcon.get(vitriicon), "drawable", getActivity().getPackageName());
+                final int idhinhicon = getResources().getIdentifier(MainActivity.arrIcon.get(vitriicon), "drawable", getActivity().getPackageName());
                 circleImageView.setImageResource(idhinhicon);
 
                 circleImageView.setOnClickListener(new View.OnClickListener() {

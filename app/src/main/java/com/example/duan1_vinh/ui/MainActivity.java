@@ -3,10 +3,6 @@ package com.example.duan1_vinh.ui;
 import android.os.Bundle;
 
 import com.example.duan1_vinh.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
-
-import android.view.View;
 
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
@@ -22,15 +18,14 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
-    public static ArrayList<String> arrayImg;
-    public static ArrayList<String> arrayIcon;
+    public static ArrayList<String> arrColor;
+    public static ArrayList<String> arrIcon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,10 +33,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        String[] tenColor=getResources().getStringArray(R.array.list);
-        String[] tenIcon=getResources().getStringArray(R.array.iconp);
-        arrayImg=new ArrayList<>(Arrays.asList(tenColor));
-        arrayIcon=new ArrayList<>(Arrays.asList(tenIcon));
+        String[] tenColor=getResources().getStringArray(R.array.color);
+        String[] tenIcon=getResources().getStringArray(R.array.icon);
+        arrColor =new ArrayList<>(Arrays.asList(tenColor));
+        arrIcon =new ArrayList<>(Arrays.asList(tenIcon));
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
         mAppBarConfiguration = new AppBarConfiguration.Builder(
