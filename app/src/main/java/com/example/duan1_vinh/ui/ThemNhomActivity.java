@@ -1,9 +1,11 @@
 package com.example.duan1_vinh.ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -11,6 +13,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.duan1_vinh.R;
+import com.example.duan1_vinh.dao.LoaiChiDAO;
+import com.example.duan1_vinh.model.LoaiChi;
 import com.example.duan1_vinh.ui.FragmentPagerAdapter.ThemNhomPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
@@ -18,21 +22,29 @@ public class ThemNhomActivity extends AppCompatActivity {
     ViewPager viewPager;
     ThemNhomPagerAdapter themNhomPagerAdapter;
     TabLayout tabLayout;
+    static final String tabName = "CHITIEU";
+    EditText edTenNhom;
+    LoaiChiDAO loaiChiDAO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_them_nhom);
+        loaiChiDAO = new LoaiChiDAO(this);
+        edTenNhom = findViewById(R.id.edTenNhom);
         viewPager = findViewById(R.id.vp_themnhom_activity);
         tabLayout = findViewById(R.id.tl_themnhom_activity);
         themNhomPagerAdapter = new ThemNhomPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(themNhomPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
+
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.done, menu);
+
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -40,11 +52,24 @@ public class ThemNhomActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.done:
-//                   Intent intent = new Intent();
-//                   intent.putExtra("idhinhselect", ColorFragment.idhinhselect+"");
-//                   setResult(RESULT_OK,intent);
-//                   finish();
-//                   break;
+                int vitrianh = IconFragment.viTriSelected;
+                String tenloaichi = edTenNhom.getText().toString();
+                if (tenloaichi.trim().length() > 0 && vitrianh != -1) {
+                    LoaiChi loaiChi = new LoaiChi(tenloaichi, vitrianh);
+                    if (loaiChiDAO.insertLoaiChi(loaiChi) > 0) {
+                        Toast.makeText(this, "Thành công", Toast.LENGTH_SHORT).show();
+                        finish();
+                        break;
+                    }else{
+                        Toast.makeText(this, "Thất bại", Toast.LENGTH_SHORT).show();
+                    }
+
+                } else if (edTenNhom.getText().toString().trim().length() == 0) {
+                    Toast.makeText(this, "Vui lòng điền tên nhóm ", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    Toast.makeText(this, "Vui lòng chọn icon", Toast.LENGTH_SHORT).show();
+                }
 
 
         }

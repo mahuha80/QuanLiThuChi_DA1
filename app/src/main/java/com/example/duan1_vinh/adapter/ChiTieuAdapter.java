@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.example.duan1_vinh.R;
 import com.example.duan1_vinh.model.LoaiChi;
+import com.example.duan1_vinh.ui.MainActivity;
 
 import java.util.List;
 
@@ -51,7 +52,8 @@ public class ChiTieuAdapter extends BaseAdapter {
             chiTieuHolder = (ChiTieuHolder) convertView.getTag();
         }
         chiTieuHolder.tvLoai.setText(listLoaiChi.get(position).getTenloaichi());
-        chiTieuHolder.imgIcon.setImageBitmap(null);
+        final int diaChiHinh = context.getResources().getIdentifier(MainActivity.arrIcon.get(listLoaiChi.get(position).getVitrihinhanh()), "drawable", context.getPackageName());
+        chiTieuHolder.imgIcon.setImageResource(diaChiHinh);
 
         return convertView;
     }
@@ -59,6 +61,14 @@ public class ChiTieuAdapter extends BaseAdapter {
     public class ChiTieuHolder {
         TextView tvLoai;
         ImageView imgIcon;
+    }
 
+    @Override
+    public void notifyDataSetChanged() {
+        super.notifyDataSetChanged();
+    }
+    public void onDataSetChange(List<LoaiChi> listLoaiChi){
+        this.listLoaiChi=listLoaiChi;
+        notifyDataSetChanged();
     }
 }

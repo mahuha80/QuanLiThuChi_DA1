@@ -25,13 +25,28 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.duan1_vinh.R;
+import com.example.duan1_vinh.adapter.ChiTieuAdapter;
+import com.example.duan1_vinh.dao.LoaiChiDAO;
+import com.example.duan1_vinh.model.LoaiChi;
 import com.example.duan1_vinh.ui.ThemNhomActivity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.transform.Result;
 
 public class ChiTieuFragment extends Fragment {
     ListView listView;
-    static final int REQUEST_CODE = 111;
+    private Context context;
+    LoaiChiDAO loaiChiDAO;
+    List<LoaiChi> loaiChiList;
+    ChiTieuAdapter chiTieuAdapter;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        this.context = context;
+    }
 
     @Nullable
     @Override
@@ -44,12 +59,14 @@ public class ChiTieuFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        String[] mang = new String[20];
-        for (int i = 0; i < 20; i++) {
-            mang[i] = i + 1 + "";
-        }
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(getActivity().getApplicationContext(), android.R.layout.simple_list_item_1, mang);
-        listView.setAdapter(arrayAdapter);
+        loaiChiList = new ArrayList<>();
+        loaiChiDAO = new LoaiChiDAO(context);
+        loaiChiList = loaiChiDAO.getAllLoaiChi();
+        setAdapterForListView();
+        addFooterForListView();
+    }
+
+    private void addFooterForListView() {
         RelativeLayout relativeLayout = new RelativeLayout(getActivity().getApplicationContext());
         ImageView img = new ImageView(getActivity().getApplicationContext());
         img.setImageResource(R.drawable.add);
@@ -66,17 +83,22 @@ public class ChiTieuFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), ThemNhomActivity.class);
-                startActivityForResult(intent,REQUEST_CODE);
+                startActivity(intent);
             }
         });
     }
 
+    private void setAdapterForListView() {
+        chiTieuAdapter = new ChiTieuAdapter(context,loaiChiList);
+        listView.setAdapter(chiTieuAdapter);
+
+    }
+
     @Override
-    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(requestCode==REQUEST_CODE  &&resultCode== Activity.RESULT_OK&& data!=null){
-            String idhinhselect=data.getStringExtra("idhinhselect");
-            Toast.makeText(getActivity().getApplicationContext(), idhinhselect+"", Toast.LENGTH_SHORT).show();
-        }
+    public void onResume() {
+        super.onResume();
+        loaiChiList.clear();
+        loaiChiList=loaiChiDAO.getAllLoaiChi();
+        chiTieuAdapter.onDataSetChange(loaiChiList);
     }
 }

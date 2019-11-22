@@ -1,11 +1,13 @@
 package com.example.duan1_vinh.ui;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TableLayout;
 import android.widget.TableRow;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,7 +22,16 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class IconFragment extends Fragment {
     TableLayout tableLayout;
     boolean isChecked = false;
+    static int viTriSelected =-1;
+    static String tenNhom;
     ArrayList<CircleImageView> circleImageViewArrayList = new ArrayList<>();
+    private Context context;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        this.context=context;
+    }
 
     @Nullable
     @Override
@@ -38,11 +49,10 @@ public class IconFragment extends Fragment {
         for (int i = 0; i < row; i++) {
             TableRow tableRow = new TableRow(getActivity().getApplicationContext());
             for (int j = 0; j < col; j++) {
-//                ImageView imageView = new ImageView(getActivity().getApplicationContext());
                 final CircleImageView circleImageView = new CircleImageView(getActivity().getApplicationContext());
-                final int vitriicon = col * i + j;
-                final int idhinhicon = getResources().getIdentifier(MainActivity.arrIcon.get(vitriicon), "drawable", getActivity().getPackageName());
-                circleImageView.setImageResource(idhinhicon);
+                final int viTri = col * i + j;
+                final int diaChiHinh = getResources().getIdentifier(MainActivity.arrIcon.get(viTri), "drawable", getActivity().getPackageName());
+                circleImageView.setImageResource(diaChiHinh);
 
                 circleImageView.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -56,6 +66,8 @@ public class IconFragment extends Fragment {
                         circleImageView.setBorderWidth(10);
                         circleImageView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
                         isChecked = true;
+                        viTriSelected=viTri;
+
 
 
                     }

@@ -2,9 +2,9 @@ package com.example.duan1_vinh.model;
 
 public class LoaiChi {
     private String tenloaichi;
-    private String vitrihinhanh;
+    private int vitrihinhanh;
 
-    public LoaiChi(String tenloaichi, String vitrihinhanh) {
+    public LoaiChi(String tenloaichi, int vitrihinhanh) {
         this.tenloaichi = tenloaichi;
         this.vitrihinhanh = vitrihinhanh;
     }
@@ -17,11 +17,11 @@ public class LoaiChi {
         this.tenloaichi = tenloaichi;
     }
 
-    public String getVitrihinhanh() {
+    public int getVitrihinhanh() {
         return vitrihinhanh;
     }
 
-    public void setVitrihinhanh(String vitrihinhanh) {
+    public void setVitrihinhanh(int vitrihinhanh) {
         this.vitrihinhanh = vitrihinhanh;
     }
 }

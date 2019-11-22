@@ -39,7 +39,8 @@
             android:hint="Nhập tên nhóm"
             android:padding="16dp"
             android:textSize="24sp"
-            android:outlineSpotShadowColor="#0A0E63"/>
+            android:outlineSpotShadowColor="#0A0E63"
+            android:id="@+id/edTenNhom"/>
     </LinearLayout>
 
     <com.google.android.material.tabs.TabLayout
