@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.duan1_vinh.R;
 import com.example.duan1_vinh.adapter.ChiTieuAdapter;
+import com.example.duan1_vinh.adapter.ThuNhapAdapter;
 import com.example.duan1_vinh.dao.LoaiChiDAO;
 import com.example.duan1_vinh.dao.LoaiThuDAO;
 import com.example.duan1_vinh.model.LoaiChi;
@@ -32,7 +33,7 @@ public class ThuNhapFragment extends Fragment {
     private Context context;
     LoaiThuDAO loaiThuDAO;
     List<LoaiThu> loaiThuList;
-    ChiTieuAdapter chiTieuAdapter;
+    ThuNhapAdapter thuNhapAdapter;
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -75,13 +76,14 @@ public class ThuNhapFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), ThemNhomActivity.class);
+                intent.putExtra("thuchi","LOAITHU");
                 startActivity(intent);
             }
         });
     }
     private void setAdapterForListView() {
-//        chiTieuAdapter = new ChiTieuAdapter(context, loaiThuList);
-        listView.setAdapter(chiTieuAdapter);
+        thuNhapAdapter = new ThuNhapAdapter(context, loaiThuList);
+        listView.setAdapter(thuNhapAdapter);
 
     }
 
@@ -90,7 +92,7 @@ public class ThuNhapFragment extends Fragment {
         super.onResume();
         loaiThuList.clear();
         loaiThuList = loaiThuDAO.getAllLoaiThu();
-//        chiTieuAdapter.onDataSetChange(loaiThuList);
+        thuNhapAdapter.onDataSetChange(loaiThuList);
     }
 
 }

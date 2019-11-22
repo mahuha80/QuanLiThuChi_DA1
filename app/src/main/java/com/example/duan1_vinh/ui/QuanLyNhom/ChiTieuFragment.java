@@ -83,6 +83,7 @@ public class ChiTieuFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), ThemNhomActivity.class);
+                intent.putExtra("thuchi","LOAICHI");
                 startActivity(intent);
             }
         });
