@@ -1,6 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-</androidx.constraintlayout.widget.ConstraintLayout>
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="₫"
+            android:paddingLeft="10dp"
+            android:textSize="20dp"
+            android:textColor="#FF3A00" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="9" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:orientation="horizontal"
+        android:weightSum="10">
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            android:src="@drawable/atm"
+            android:paddingTop="10dp"
+            />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="9" />
+    </LinearLayout>
+    <androidx.viewpager.widget.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="142dp"
+        android:id="@+id/vp_khoanthu"/>
+    <com.google.android.material.tabs.TabLayout
+        android:layout_width="100dp"
+        android:layout_gravity="center"
+        android:layout_height="15dp"
+        android:id="@+id/tl_khoanthu"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="8dp"
+        android:background="#ECF0F1" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:orientation="horizontal">
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/calendar"
+            android:id="@+id/calendar_khoanthu"
+            android:layout_margin="22dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="23/11/2019"
+            android:textSize="19dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginLeft="4dp"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:layout_toRightOf="@id/calendar_khoanthu"
+            android:id="@+id/tvNgayGio_khoanthu"/>
+        <TextView
+            android:layout_width="2dp"
+            android:layout_height="65dp"
+            android:background="#ECF0F1"
+            android:layout_toRightOf="@id/tvNgayGio_khoanthu"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:id="@+id/tvGuideline"/>
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/wallet"
+            android:layout_toRightOf="@id/tvGuideline"
+            android:layout_margin="22dp"
+            android:id="@+id/wallet_khoanchi"/>
+        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="23/11/2019"
+            android:textSize="19dp"
+            android:layout_marginTop="26dp"
+            android:layout_marginLeft="4dp"
+            style="@style/TextAppearance.AppCompat.Body1"
+            android:layout_toRightOf="@id/wallet_khoanchi" />
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:background="#ECF0F1"/>
+</LinearLayout>
