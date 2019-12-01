@@ -52,8 +52,8 @@ public class ChiTieuAdapter extends BaseAdapter {
             chiTieuHolder = (ChiTieuHolder) convertView.getTag();
         }
         chiTieuHolder.tvLoai.setText(listLoaiChi.get(position).getTenloaichi());
-        final int diaChiHinh = context.getResources().getIdentifier(MainActivity.arrIcon.get(listLoaiChi.get(position).getVitrihinhanh()), "drawable", context.getPackageName());
-        chiTieuHolder.imgIcon.setImageResource(diaChiHinh);
+        final int hinh = context.getResources().getIdentifier(MainActivity.arrIcon.get(listLoaiChi.get(position).getVitrihinhanh()), "drawable", context.getPackageName());
+        chiTieuHolder.imgIcon.setImageResource(hinh);
 
         return convertView;
     }

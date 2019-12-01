@@ -1,5 +1,7 @@
 package com.example.duan1_vinh.model;
 
+import androidx.annotation.NonNull;
+
 public class LoaiThu {
     private String tenloaithu;
     private int vitrihinhanh;
@@ -23,5 +25,12 @@ public class LoaiThu {
 
     public void setVitrihinhanh(int vitrihinhanh) {
         this.vitrihinhanh = vitrihinhanh;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return tenloaithu;
+
     }
 }
