@@ -103,11 +103,11 @@ public class KhoanThuFragment extends Fragment {
         khoanThuViewModel =
                 ViewModelProviders.of(this).get(KhoanThuViewModel.class);
         View root = inflater.inflate(R.layout.fragment_gallery, container, false);
-        spKhoanThu = root.findViewById(R.id.spKhoanChi);
-        tvNgayGio = root.findViewById(R.id.tvNgayGio_khoanchi);
-        imgCalendar = root.findViewById(R.id.calendar_khoanchi);
-        edKhoanTien = root.findViewById(R.id.edKhoanTien_khoanchi);
-        edGhiChu = root.findViewById(R.id.edGhiChu_khoanchi);
+        spKhoanThu = root.findViewById(R.id.spKhoanThu);
+        tvNgayGio = root.findViewById(R.id.tvNgayGio_khoanthu);
+        imgCalendar = root.findViewById(R.id.calendar_khoanthu);
+        edKhoanTien = root.findViewById(R.id.edKhoanTien_khoanthu);
+        edGhiChu = root.findViewById(R.id.edGhiChu_khoanthu);
         Date calendar = Calendar.getInstance().getTime();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
         tvNgayGio.setText(simpleDateFormat.format(calendar));
