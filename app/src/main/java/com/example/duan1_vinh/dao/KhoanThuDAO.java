@@ -30,7 +30,7 @@ public class KhoanThuDAO {
         contentValues.put("sotien", khoanThu.getSotien());
         contentValues.put("ghichu", khoanThu.getGhichu());
         contentValues.put("tenloaithu", khoanThu.getLoaiThu().getTenloaithu());
-        contentValues.put("ngaygio", String.valueOf(simpleDateFormat.parse(String.valueOf(khoanThu.getNgaygio()))));
+        contentValues.put("ngaygio", simpleDateFormat.format(khoanThu.getNgaygio()));
         return db.insert(TABLE_NAME, null, contentValues);
     }
 }
