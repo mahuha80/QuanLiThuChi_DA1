@@ -9,8 +9,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -23,9 +23,12 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.duan1_vinh.R;
 import com.example.duan1_vinh.adapter.LoaiThuSpinnerAdapter;
+import com.example.duan1_vinh.dao.KhoanThuDAO;
 import com.example.duan1_vinh.dao.LoaiThuDAO;
+import com.example.duan1_vinh.model.KhoanThu;
 import com.example.duan1_vinh.model.LoaiThu;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -38,7 +41,11 @@ public class KhoanThuFragment extends Fragment {
     private Context context;
     TextView tvNgayGio;
     ImageView imgCalendar;
+    EditText edKhoanTien, edGhiChu;
     LoaiThuSpinnerAdapter loaiThuSpinnerAdapter;
+    KhoanThuDAO khoanThuDAO;
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
@@ -61,7 +68,30 @@ public class KhoanThuFragment extends Fragment {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.icon_themkhoanthu:
-                Toast.makeText(context, "hello ", Toast.LENGTH_SHORT).show();
+                String khoanTien = edKhoanTien.getText().toString();
+                String ghichu = edGhiChu.getText().toString();
+                String ngaygio = tvNgayGio.getText().toString();
+                LoaiThu loaiThu = (LoaiThu) spKhoanThu.getSelectedItem();
+                KhoanThu khoanThu = null;
+                long result;
+                if (ngaygio.trim().equals("") && khoanTien.trim().equals("")) {
+                    Toast.makeText(context, "Vui lòng điền đẩy đủ các trường ! ", Toast.LENGTH_SHORT).show();
+                } else {
+                    try {
+                        khoanThu = new KhoanThu(Double.parseDouble(khoanTien), ghichu, loaiThu, simpleDateFormat.parse(ngaygio));
+                        result = khoanThuDAO.insertKhoanChi(khoanThu);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                        Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "insert không thành công", Toast.LENGTH_SHORT).show();
+                        break;
+                    }
+                    if (result > 0) {
+                        Toast.makeText(context, "ok", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(context, "an lol r", Toast.LENGTH_SHORT).show();
+                    }
+                }
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -73,11 +103,13 @@ public class KhoanThuFragment extends Fragment {
         khoanThuViewModel =
                 ViewModelProviders.of(this).get(KhoanThuViewModel.class);
         View root = inflater.inflate(R.layout.fragment_gallery, container, false);
-        spKhoanThu = root.findViewById(R.id.spKhoanThu);
-        tvNgayGio = root.findViewById(R.id.tvNgayGio_khoanthu);
-        imgCalendar = root.findViewById(R.id.calendar_khoanthu);
-        Date calendar=Calendar.getInstance().getTime();
-        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("dd-MM-yyyy");
+        spKhoanThu = root.findViewById(R.id.spKhoanChi);
+        tvNgayGio = root.findViewById(R.id.tvNgayGio_khoanchi);
+        imgCalendar = root.findViewById(R.id.calendar_khoanchi);
+        edKhoanTien = root.findViewById(R.id.edKhoanTien_khoanchi);
+        edGhiChu = root.findViewById(R.id.edGhiChu_khoanchi);
+        Date calendar = Calendar.getInstance().getTime();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
         tvNgayGio.setText(simpleDateFormat.format(calendar));
         return root;
     }
@@ -86,8 +118,9 @@ public class KhoanThuFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         //set adapter for spinner
+        khoanThuDAO = new KhoanThuDAO(context);
         loaiThuDAO = new LoaiThuDAO(context);
-        loaiThuSpinnerAdapter=new LoaiThuSpinnerAdapter(context,loaiThuDAO.getAllLoaiThu());
+        loaiThuSpinnerAdapter = new LoaiThuSpinnerAdapter(context, loaiThuDAO.getAllLoaiThu());
         spKhoanThu.setAdapter(loaiThuSpinnerAdapter);
         //set date picker dialog for img calendar'
         Calendar calendar = Calendar.getInstance();
@@ -99,10 +132,10 @@ public class KhoanThuFragment extends Fragment {
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 String monthTv = "";
                 String dayTv = "";
-                if ((month+1) >= 10) {
-                    monthTv = (month+1) + "";
+                if ((month + 1) >= 10) {
+                    monthTv = (month + 1) + "";
                 } else {
-                    monthTv = "0" + (month+1) ;
+                    monthTv = "0" + (month + 1);
                 }
                 if (dayOfMonth < 10) {
                     dayTv = "0" + dayOfMonth;

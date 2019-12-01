@@ -1,54 +1,157 @@
 package com.example.duan1_vinh.ui.ThemKhoanChi;
 
+import android.app.DatePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.duan1_vinh.R;
+import com.example.duan1_vinh.adapter.LoaiChiSpinnerAdapter;
+import com.example.duan1_vinh.adapter.LoaiThuSpinnerAdapter;
+import com.example.duan1_vinh.dao.KhoanThuDAO;
+import com.example.duan1_vinh.dao.LoaiChiDAO;
+import com.example.duan1_vinh.dao.LoaiThuDAO;
+import com.example.duan1_vinh.model.KhoanThu;
+import com.example.duan1_vinh.model.LoaiThu;
 import com.example.duan1_vinh.ui.FragmentPagerAdapter.KhoanChiPagerAdapter;
+import com.example.duan1_vinh.ui.ThemKhoanThu.KhoanThuViewModel;
 import com.google.android.material.tabs.TabLayout;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 public class KhoanChiFragment extends Fragment {
     ViewPager vp;
     TabLayout tl;
     private Context context;
     KhoanChiPagerAdapter khoanChiPagerAdapter;
+    private KhoanThuViewModel khoanThuViewModel;
+    Spinner spKhoanChi;
+    LoaiChiDAO loaiChiDao;
+    TextView tvNgayGio;
+    ImageView imgCalendar;
+    EditText edKhoanTien, edGhiChu;
+    LoaiChiSpinnerAdapter loaiChiSpinnerAdapter;;
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+    private KhoanChiViewModel khoanChiViewModel;
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        this.context=context;
+        this.context = context;
     }
 
-    private KhoanChiViewModel khoanChiViewModel;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+//    @Override
+//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.icon_themkhoanthu:
+//                String khoanTien = edKhoanTien.getText().toString();
+//                String ghichu = edGhiChu.getText().toString();
+//                String ngaygio = tvNgayGio.getText().toString();
+//                LoaiThu loaiThu = (LoaiThu) spKhoanChi.getSelectedItem();
+//                KhoanThu khoanThu = null;
+//                long result;
+//                if (ngaygio.trim().equals("") && khoanTien.trim().equals("")) {
+//                    Toast.makeText(context, "Vui lòng điền đẩy đủ các trường ! ", Toast.LENGTH_SHORT).show();
+//                } else {
+//                    try {
+//                        khoanThu = new KhoanThu(Double.parseDouble(khoanTien), ghichu, loaiThu, simpleDateFormat.parse(ngaygio));
+//                        result = khoanThuDAO.insertKhoanChi(khoanThu);
+//                    } catch (ParseException e) {
+//                        e.printStackTrace();
+//                        Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(context, "insert không thành công", Toast.LENGTH_SHORT).show();
+//                        break;
+//                    }
+//                    if (result > 0) {
+//                        Toast.makeText(context, "ok", Toast.LENGTH_SHORT).show();
+//                    } else {
+//                        Toast.makeText(context, "an lol r", Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//                break;
+//        }
+//        return super.onOptionsItemSelected(item);
+//
+//    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        //set adapter for spinner
+        loaiChiDao = new LoaiChiDAO(context);
+        loaiChiSpinnerAdapter = new LoaiChiSpinnerAdapter(context, loaiChiDao.getAllLoaiChi());
+        spKhoanChi.setAdapter(loaiChiSpinnerAdapter);
+        //set date picker dialog for img calendar'
+        Calendar calendar = Calendar.getInstance();
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        int month = calendar.get(Calendar.MONTH);
+        int year = calendar.get(Calendar.YEAR);
+        final DatePickerDialog datePickerDialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
+                String monthTv = "";
+                String dayTv = "";
+                if ((month + 1) >= 10) {
+                    monthTv = (month + 1) + "";
+                } else {
+                    monthTv = "0" + (month + 1);
+                }
+                if (dayOfMonth < 10) {
+                    dayTv = "0" + dayOfMonth;
+                } else {
+                    dayTv = dayOfMonth + "";
+                }
+                tvNgayGio.setText(dayTv + "-" + monthTv + "-" + year);
+            }
+        }, year, month, day);
+        imgCalendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                datePickerDialog.show();
+
+            }
+        });
+
+    }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         khoanChiViewModel =
                 ViewModelProviders.of(this).get(KhoanChiViewModel.class);
         View root = inflater.inflate(R.layout.fragment_slideshow, container, false);
-        vp = root.findViewById(R.id.vp_khoanchi);
-        tl = root.findViewById(R.id.tl_khoanchi);
+        spKhoanChi = root.findViewById(R.id.spKhoanChi);
+        tvNgayGio = root.findViewById(R.id.tvNgayGio_khoanchi);
+        imgCalendar = root.findViewById(R.id.calendar_khoanchi);
+        edKhoanTien = root.findViewById(R.id.edKhoanTien_khoanchi);
+        edGhiChu = root.findViewById(R.id.edGhiChu_khoanchi);
+        Date calendar = Calendar.getInstance().getTime();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        tvNgayGio.setText(simpleDateFormat.format(calendar));
         return root;
-    }
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        khoanChiPagerAdapter=new KhoanChiPagerAdapter(getActivity().getSupportFragmentManager(),context);
-        vp.setAdapter(khoanChiPagerAdapter);
-        tl.setupWithViewPager(vp);
-
-
     }
 }

@@ -6,18 +6,22 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.example.duan1_vinh.dao.KhoanChiDAO;
+import com.example.duan1_vinh.dao.KhoanThuDAO;
 import com.example.duan1_vinh.dao.LoaiChiDAO;
 import com.example.duan1_vinh.dao.LoaiThuDAO;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     public DatabaseHelper(@Nullable Context context) {
-        super(context, "QuanLyThuChidb", null, 2);
+        super(context, "QuanLyThuChidb", null, 3);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(LoaiChiDAO.CREATE_TABLE);
         db.execSQL(LoaiThuDAO.CREATE_TABLE);
+        db.execSQL(KhoanThuDAO.CREATE_TABLE);
+        db.execSQL(KhoanChiDAO.CREATE_TABLE);
     }
 
     @Override
