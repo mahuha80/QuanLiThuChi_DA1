@@ -2,6 +2,7 @@ package com.example.duan1_vinh.ui.ThemKhoanThu;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -27,6 +28,7 @@ import com.example.duan1_vinh.dao.KhoanThuDAO;
 import com.example.duan1_vinh.dao.LoaiThuDAO;
 import com.example.duan1_vinh.model.KhoanThu;
 import com.example.duan1_vinh.model.LoaiThu;
+import com.example.duan1_vinh.ui.BieuDoThongKe.ThongKeFragment;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -82,7 +84,7 @@ public class KhoanThuFragment extends Fragment {
                     } catch (ParseException e) {
                         }
                     try {
-                        result = khoanThuDAO.insertKhoanChi(khoanThu);
+                        result = khoanThuDAO.insertKhoanThu(khoanThu);
                     } catch (ParseException e) {
                         Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
                         e.printStackTrace();
@@ -90,6 +92,7 @@ public class KhoanThuFragment extends Fragment {
                     }
                     if (result > 0) {
                         Toast.makeText(context, "ok", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(context, ThongKeFragment.class));
                     } else {
                         Toast.makeText(context, "an lol r", Toast.LENGTH_SHORT).show();
                     }
@@ -156,5 +159,16 @@ public class KhoanThuFragment extends Fragment {
             }
         });
 
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        try {
+            Toast.makeText(context, khoanThuDAO.listKhoanThu().size()+"", Toast.LENGTH_SHORT).show();
+        } catch (ParseException e) {
+            e.printStackTrace();
+            Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
+        }
     }
 }

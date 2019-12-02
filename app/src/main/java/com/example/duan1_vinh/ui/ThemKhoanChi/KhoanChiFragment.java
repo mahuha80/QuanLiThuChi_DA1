@@ -80,7 +80,7 @@ public class KhoanChiFragment extends Fragment {
 //                } else {
 //                    try {
 //                        khoanThu = new KhoanThu(Double.parseDouble(khoanTien), ghichu, loaiThu, simpleDateFormat.parse(ngaygio));
-//                        result = khoanThuDAO.insertKhoanChi(khoanThu);
+//                        result = khoanThuDAO.insertKhoanThu(khoanThu);
 //                    } catch (ParseException e) {
 //                        e.printStackTrace();
 //                        Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();

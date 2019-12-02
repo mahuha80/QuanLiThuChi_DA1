@@ -20,7 +20,7 @@ public class KhoanChiDAO {
     private Context context;
     SQLiteDatabase db;
     public static final String TABLE_NAME = "KhoanChiTB";
-    public static final String CREATE_TABLE = "CREATE TABLE KhoanChiTB (id primary key autoincrement,sotien double,ghichu text,tenloaichi text,ngaygio date )";
+    public static final String CREATE_TABLE = "CREATE TABLE KhoanChiTB (id integer primary key autoincrement,sotien double,ghichu text,tenloaichi text,ngaygio date )";
 
     public KhoanChiDAO(Context context) {
         this.context = context;
