@@ -23,13 +23,6 @@ public class VeChungToiFragment extends Fragment {
         veChungToiModel =
                 ViewModelProviders.of(this).get(VeChungToiModel.class);
         View root = inflater.inflate(R.layout.fragment_send, container, false);
-        final TextView textView = root.findViewById(R.id.text_send);
-        veChungToiModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
         return root;
     }
 }

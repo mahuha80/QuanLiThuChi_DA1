@@ -13,7 +13,7 @@ import com.example.duan1_vinh.dao.LoaiThuDAO;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
     public DatabaseHelper(@Nullable Context context) {
-        super(context, "QuanLyThuChidb", null, 4);
+        super(context, "QuanLyThuChidb", null, 1);
     }
 
     @Override

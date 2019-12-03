@@ -23,13 +23,6 @@ public class CaiDatFragment extends Fragment {
         caiDatViewModel =
                 ViewModelProviders.of(this).get(CaiDatViewModel.class);
         View root = inflater.inflate(R.layout.fragment_tools, container, false);
-        final TextView textView = root.findViewById(R.id.text_tools);
-        caiDatViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
         return root;
     }
 }

@@ -20,7 +20,12 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.NavigationUI;
 
 import com.example.duan1_vinh.R;
 import com.example.duan1_vinh.adapter.LoaiThuSpinnerAdapter;
@@ -29,6 +34,7 @@ import com.example.duan1_vinh.dao.LoaiThuDAO;
 import com.example.duan1_vinh.model.KhoanThu;
 import com.example.duan1_vinh.model.LoaiThu;
 import com.example.duan1_vinh.ui.BieuDoThongKe.ThongKeFragment;
+import com.example.duan1_vinh.ui.MainActivity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -92,7 +98,7 @@ public class KhoanThuFragment extends Fragment {
                     }
                     if (result > 0) {
                         Toast.makeText(context, "ok", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(context, ThongKeFragment.class));
+
                     } else {
                         Toast.makeText(context, "an lol r", Toast.LENGTH_SHORT).show();
                     }
@@ -161,14 +167,5 @@ public class KhoanThuFragment extends Fragment {
 
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        try {
-            Toast.makeText(context, khoanThuDAO.listKhoanThu().size()+"", Toast.LENGTH_SHORT).show();
-        } catch (ParseException e) {
-            e.printStackTrace();
-            Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
-        }
-    }
+
 }
