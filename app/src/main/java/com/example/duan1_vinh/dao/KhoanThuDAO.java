@@ -22,7 +22,7 @@ public class KhoanThuDAO {
     DatabaseHelper databaseHelper;
     SQLiteDatabase db;
     private Context context;
-
+//aaa
     public KhoanThuDAO(Context context) {
         this.context = context;
         databaseHelper = new DatabaseHelper(context);
