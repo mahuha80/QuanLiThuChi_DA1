@@ -5,15 +5,16 @@
     <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:src="@drawable/add"
+        android:src="@android:drawable/ic_input_add"
         android:layout_margin="8dp"
         android:id="@+id/imgIcon"/>
     <ImageView
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:src="@drawable/atm"
+        android:src="@android:drawable/ic_delete"
         android:layout_margin="8dp"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:id="@+id/imgDel"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="60dp"

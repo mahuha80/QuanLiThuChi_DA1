@@ -44,4 +44,7 @@ public class LoaiThuDAO {
         }
         return loaiThuList;
     }
+    public int deleteLoaiThu(String tenloaithu){
+        return db.delete(TABLE_NAME,"tenloaithu=?",new String[]{tenloaithu});
+    }
 }

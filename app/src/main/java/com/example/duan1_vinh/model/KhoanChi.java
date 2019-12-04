@@ -3,23 +3,24 @@ package com.example.duan1_vinh.model;
 import java.util.Date;
 
 public class KhoanChi {
-    private int sotien;
+    private double sotien;
     private String ghichu;
     private LoaiChi loaiChi;
     private Date ngaygio;
 
-    public KhoanChi(int sotien, String ghichu, LoaiChi loaiChi, Date ngaygio) {
+    public KhoanChi(double sotien, String ghichu, LoaiChi loaiChi, Date ngaygio) {
         this.sotien = sotien;
         this.ghichu = ghichu;
         this.loaiChi = loaiChi;
         this.ngaygio = ngaygio;
+
     }
 
-    public int getSotien() {
+    public double getSotien() {
         return sotien;
     }
 
-    public void setSotien(int sotien) {
+    public void setSotien(double sotien) {
         this.sotien = sotien;
     }
 

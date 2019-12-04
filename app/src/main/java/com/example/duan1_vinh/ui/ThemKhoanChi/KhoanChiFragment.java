@@ -4,6 +4,8 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,13 +24,12 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.duan1_vinh.R;
 import com.example.duan1_vinh.adapter.LoaiChiSpinnerAdapter;
-import com.example.duan1_vinh.adapter.LoaiThuSpinnerAdapter;
-import com.example.duan1_vinh.dao.KhoanThuDAO;
+import com.example.duan1_vinh.dao.KhoanChiDAO;
 import com.example.duan1_vinh.dao.LoaiChiDAO;
-import com.example.duan1_vinh.dao.LoaiThuDAO;
+import com.example.duan1_vinh.model.KhoanChi;
 import com.example.duan1_vinh.model.KhoanThu;
+import com.example.duan1_vinh.model.LoaiChi;
 import com.example.duan1_vinh.model.LoaiThu;
-import com.example.duan1_vinh.ui.FragmentPagerAdapter.KhoanChiPagerAdapter;
 import com.example.duan1_vinh.ui.ThemKhoanThu.KhoanThuViewModel;
 import com.google.android.material.tabs.TabLayout;
 
@@ -41,14 +42,15 @@ public class KhoanChiFragment extends Fragment {
     ViewPager vp;
     TabLayout tl;
     private Context context;
-    KhoanChiPagerAdapter khoanChiPagerAdapter;
     private KhoanThuViewModel khoanThuViewModel;
     Spinner spKhoanChi;
     LoaiChiDAO loaiChiDao;
+    KhoanChiDAO khoanChiDAO;
     TextView tvNgayGio;
     ImageView imgCalendar;
     EditText edKhoanTien, edGhiChu;
-    LoaiChiSpinnerAdapter loaiChiSpinnerAdapter;;
+    LoaiChiSpinnerAdapter loaiChiSpinnerAdapter;
+    ;
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
     private KhoanChiViewModel khoanChiViewModel;
 
@@ -58,6 +60,12 @@ public class KhoanChiFragment extends Fragment {
         this.context = context;
     }
 
+    @Override
+    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.menu_themkhoanthu, menu);
+
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -65,44 +73,49 @@ public class KhoanChiFragment extends Fragment {
         setHasOptionsMenu(true);
     }
 
-//    @Override
-//    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-//        switch (item.getItemId()) {
-//            case R.id.icon_themkhoanthu:
-//                String khoanTien = edKhoanTien.getText().toString();
-//                String ghichu = edGhiChu.getText().toString();
-//                String ngaygio = tvNgayGio.getText().toString();
-//                LoaiThu loaiThu = (LoaiThu) spKhoanChi.getSelectedItem();
-//                KhoanThu khoanThu = null;
-//                long result;
-//                if (ngaygio.trim().equals("") && khoanTien.trim().equals("")) {
-//                    Toast.makeText(context, "Vui lòng điền đẩy đủ các trường ! ", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    try {
-//                        khoanThu = new KhoanThu(Double.parseDouble(khoanTien), ghichu, loaiThu, simpleDateFormat.parse(ngaygio));
-//                        result = khoanThuDAO.insertKhoanThu(khoanThu);
-//                    } catch (ParseException e) {
-//                        e.printStackTrace();
-//                        Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
-//                        Toast.makeText(context, "insert không thành công", Toast.LENGTH_SHORT).show();
-//                        break;
-//                    }
-//                    if (result > 0) {
-//                        Toast.makeText(context, "ok", Toast.LENGTH_SHORT).show();
-//                    } else {
-//                        Toast.makeText(context, "an lol r", Toast.LENGTH_SHORT).show();
-//                    }
-//                }
-//                break;
-//        }
-//        return super.onOptionsItemSelected(item);
-//
-//    }
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.icon_themkhoanthu:
+                String khoanTien = edKhoanTien.getText().toString();
+                String ghichu = edGhiChu.getText().toString();
+                String ngaygio = tvNgayGio.getText().toString();
+                LoaiChi loaiChi = (LoaiChi) spKhoanChi.getSelectedItem();
+                KhoanChi khoanChi = null;
+                long result = 0;
+                if (ngaygio.trim().equals("") && khoanTien.trim().equals("")) {
+                    Toast.makeText(context, "Vui lòng điền đẩy đủ các trường ! ", Toast.LENGTH_SHORT).show();
+                } else {
+                    try {
+                        khoanChi = new KhoanChi(Double.parseDouble(khoanTien), ghichu, loaiChi, simpleDateFormat.parse(ngaygio));
+                    } catch (ParseException e) {
+                    }
+                    try {
+                        result = khoanChiDAO.insertKhoanChi(khoanChi);
+                    } catch (ParseException e) {
+                        Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
+                        e.printStackTrace();
+                        break;
+                    }
+                    if (result > 0) {
+                        Toast.makeText(context, "ok", Toast.LENGTH_SHORT).show();
+
+                    } else {
+                        Toast.makeText(context, "an lol r", Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+
+    }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         //set adapter for spinner
+        khoanChiDAO = new KhoanChiDAO(context);
         loaiChiDao = new LoaiChiDAO(context);
         loaiChiSpinnerAdapter = new LoaiChiSpinnerAdapter(context, loaiChiDao.getAllLoaiChi());
         spKhoanChi.setAdapter(loaiChiSpinnerAdapter);

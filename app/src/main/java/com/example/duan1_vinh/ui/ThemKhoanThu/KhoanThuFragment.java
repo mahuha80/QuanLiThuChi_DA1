@@ -88,7 +88,7 @@ public class KhoanThuFragment extends Fragment {
                     try {
                         khoanThu = new KhoanThu(Double.parseDouble(khoanTien), ghichu, loaiThu, simpleDateFormat.parse(ngaygio));
                     } catch (ParseException e) {
-                        }
+                    }
                     try {
                         result = khoanThuDAO.insertKhoanThu(khoanThu);
                     } catch (ParseException e) {
