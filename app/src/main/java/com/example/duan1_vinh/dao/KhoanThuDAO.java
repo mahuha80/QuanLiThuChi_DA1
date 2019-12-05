@@ -40,19 +40,24 @@ public class KhoanThuDAO {
 
     public List<KhoanThu> listKhoanThu() throws ParseException {
         List<KhoanThu> list = new ArrayList<>();
-        String query="SELECT * FROM "+TABLE_NAME;
-        Cursor cursor=db.rawQuery(query,null);
+        String query = "SELECT * FROM " + TABLE_NAME;
+        Cursor cursor = db.rawQuery(query, null);
         cursor.moveToFirst();
-        while (!cursor.isAfterLast()){
-            Double soTien= Double.valueOf(cursor.getString(cursor.getColumnIndex("sotien")));
-            String ghiChu=cursor.getString(cursor.getColumnIndex("ghichu"));
-            String tenLoaiThu=cursor.getString(cursor.getColumnIndex("tenloaithu"));
-            Date ngaygio=simpleDateFormat.parse(cursor.getString(cursor.getColumnIndex("ngaygio")));
-            LoaiThu loaiThu=new LoaiThu(tenLoaiThu,0);
-            KhoanThu khoanThu=new KhoanThu(soTien,ghiChu,loaiThu,ngaygio);
+        while (!cursor.isAfterLast()) {
+            Double soTien = Double.valueOf(cursor.getString(cursor.getColumnIndex("sotien")));
+            String ghiChu = cursor.getString(cursor.getColumnIndex("ghichu"));
+            String tenLoaiThu = cursor.getString(cursor.getColumnIndex("tenloaithu"));
+            Date ngaygio = simpleDateFormat.parse(cursor.getString(cursor.getColumnIndex("ngaygio")));
+            int id=cursor.getInt(0);
+            LoaiThu loaiThu = new LoaiThu(tenLoaiThu, 0);
+            KhoanThu khoanThu = new KhoanThu(id,soTien, ghiChu, loaiThu, ngaygio);
             list.add(khoanThu);
             cursor.moveToNext();
         }
         return list;
+    }
+
+    public int removeKhoanThu(int id) {
+        return db.delete(TABLE_NAME, "id=?", new String[]{String.valueOf(id)});
     }
 }

@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="12dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:layout_marginTop="8dp"
+    android:id="@+id/root">
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/rlv"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp">
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp">
 
         <ImageView
             android:id="@+id/icon0"
@@ -21,7 +25,7 @@
             android:id="@+id/tvSoTien_lv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30sp"
+            android:layout_marginLeft="24dp"
             android:layout_marginTop="8dp"
             android:layout_toRightOf="@id/icon0"
             android:textSize="16dp"
@@ -29,68 +33,85 @@
     </RelativeLayout>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/rlv1"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp">
+        android:layout_below="@id/rlv"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp">
 
         <ImageView
             android:id="@+id/icon1"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:background="#fafafa"
             android:src="@drawable/iconnote" />
 
         <TextView
             android:id="@+id/tvGhiChu_lv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30sp"
-            android:layout_marginTop="8dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="12dp"
             android:layout_toRightOf="@id/icon1"
             android:textSize="16dp"
             android:textStyle="bold" />
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/rlv2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/rlv3"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="29dp"
         android:layout_marginBottom="8dp">
 
         <ImageView
             android:id="@+id/icon2"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:background="#fafafa"
             android:src="@drawable/kind" />
 
         <TextView
             android:id="@+id/tvLoai_lv"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30sp"
-            android:layout_marginTop="8dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="12dp"
             android:layout_toRightOf="@id/icon2"
+            android:text="1000000000"
             android:textSize="16dp"
             android:textStyle="bold" />
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/rlv3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="25dp"
         android:layout_marginBottom="8dp">
 
         <ImageView
             android:id="@+id/icon3"
             android:layout_width="48dp"
             android:layout_height="48dp"
+            android:layout_marginRight="5dp"
+            android:background="#fafafa"
             android:src="@drawable/icontime" />
 
         <TextView
             android:id="@+id/tvNgay_lv"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="12dp"
             android:layout_toRightOf="@id/icon3"
+            android:text="25-12-1999"
             android:textSize="16dp"
             android:textStyle="bold" />
     </RelativeLayout>
-</LinearLayout>
+</RelativeLayout>
