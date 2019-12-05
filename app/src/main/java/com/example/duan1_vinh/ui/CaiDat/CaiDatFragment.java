@@ -16,7 +16,6 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.duan1_vinh.R;
-import com.example.duan1_vinh.adapter.ThongKeChiTietAdapter;
 import com.example.duan1_vinh.dao.KhoanThuDAO;
 import com.example.duan1_vinh.model.KhoanThu;
 import com.example.duan1_vinh.ui.ThongKeChiTiet.ThongKeChiTietModel;

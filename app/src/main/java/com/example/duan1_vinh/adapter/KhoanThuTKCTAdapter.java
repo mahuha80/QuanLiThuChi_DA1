@@ -18,14 +18,14 @@ import com.example.duan1_vinh.model.KhoanThu;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-public class ThongKeChiTietAdapter extends BaseAdapter {
+public class KhoanThuTKCTAdapter extends BaseAdapter {
     private Context context;
     private List<KhoanThu> list;
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
     KhoanThuDAO khoanThuDAO;
 
 
-    public ThongKeChiTietAdapter(Context context, List<KhoanThu> list) {
+    public KhoanThuTKCTAdapter(Context context, List<KhoanThu> list) {
         this.context = context;
         this.list = list;
         khoanThuDAO = new KhoanThuDAO(context);
@@ -90,7 +90,7 @@ public class ThongKeChiTietAdapter extends BaseAdapter {
         return convertView;
     }
 
-    public class ThongKeChiTietHolder {
+    public static class ThongKeChiTietHolder {
         TextView tvSoTien, tvNote, tvTime, tvLoai;
         RelativeLayout root;
     }

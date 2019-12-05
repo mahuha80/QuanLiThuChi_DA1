@@ -22,7 +22,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class IconFragment extends Fragment {
     TableLayout tableLayout;
     boolean isChecked = false;
-    static int viTriSelected =-1;
+    static int viTriSelected = -1;
     static String tenNhom;
     ArrayList<CircleImageView> circleImageViewArrayList = new ArrayList<>();
     private Context context;
@@ -30,7 +30,7 @@ public class IconFragment extends Fragment {
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        this.context=context;
+        this.context = context;
     }
 
     @Nullable
@@ -58,7 +58,7 @@ public class IconFragment extends Fragment {
                     @Override
                     public void onClick(View v) {
                         if (isChecked) {
-                            for(int i=0;i<circleImageViewArrayList.size();i++){
+                            for (int i = 0; i < circleImageViewArrayList.size(); i++) {
                                 circleImageViewArrayList.get(i).setBorderWidth(0);
                             }
                         }
@@ -66,8 +66,7 @@ public class IconFragment extends Fragment {
                         circleImageView.setBorderWidth(10);
                         circleImageView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
                         isChecked = true;
-                        viTriSelected=viTri;
-
+                        viTriSelected = viTri;
 
 
                     }

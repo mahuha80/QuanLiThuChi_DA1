@@ -33,28 +33,34 @@ public class KhoanChiDAO {
 
     public long insertKhoanChi(KhoanChi khoanChi) throws ParseException {
         ContentValues contentValues = new ContentValues();
-        contentValues.put("sotien",khoanChi.getSotien());
-        contentValues.put("ghichu",khoanChi.getGhichu());
-        contentValues.put("tenloaichi",khoanChi.getLoaiChi().getTenloaichi());
+        contentValues.put("sotien", khoanChi.getSotien());
+        contentValues.put("ghichu", khoanChi.getGhichu());
+        contentValues.put("tenloaichi", khoanChi.getLoaiChi().getTenloaichi());
         contentValues.put("ngaygio", simpleDateFormat.format(khoanChi.getNgaygio()));
-        return db.insert(TABLE_NAME,null,contentValues);
+        return db.insert(TABLE_NAME, null, contentValues);
     }
 
-    public List<KhoanThu> listKhoanThu() throws ParseException {
-        List<KhoanThu> list = new ArrayList<>();
-        String query="SELECT * FROM "+TABLE_NAME;
-        Cursor cursor=db.rawQuery(query,null);
+    public List<KhoanChi> listKhoanChi() throws ParseException {
+        List<KhoanChi> list = new ArrayList<>();
+        String query = "SELECT * FROM " + TABLE_NAME;
+        Cursor cursor = db.rawQuery(query, null);
         cursor.moveToFirst();
-        while (!cursor.isAfterLast()){
-            Double soTien= Double.valueOf(cursor.getString(cursor.getColumnIndex("sotien")));
-            String ghiChu=cursor.getString(cursor.getColumnIndex("ghichu"));
-            String tenLoaiThu=cursor.getString(cursor.getColumnIndex("tenloaithu"));
-            Date ngaygio=simpleDateFormat.parse(cursor.getString(cursor.getColumnIndex("ngaygio")));
-            LoaiThu loaiThu=new LoaiThu(tenLoaiThu,0);
-            KhoanThu khoanThu=new KhoanThu(soTien,ghiChu,loaiThu,ngaygio);
-            list.add(khoanThu);
+        while (!cursor.isAfterLast()) {
+            Double soTien = Double.valueOf(cursor.getString(cursor.getColumnIndex("sotien")));
+            String ghiChu = cursor.getString(cursor.getColumnIndex("ghichu"));
+            String tenloaichi = cursor.getString(cursor.getColumnIndex("tenloaichi"));
+            Date ngaygio = simpleDateFormat.parse(cursor.getString(cursor.getColumnIndex("ngaygio")));
+            LoaiChi loaiChi = new LoaiChi(tenloaichi, 0);
+            int id = cursor.getInt(0);
+            KhoanChi khoanChi = new KhoanChi(id, soTien, ghiChu, loaiChi, ngaygio);
+            list.add(khoanChi);
             cursor.moveToNext();
         }
         return list;
+    }
+
+    public int removeKhoanChi(int id) {
+        return db.delete(TABLE_NAME, "id=?", new String[]{String.valueOf(id)});
+
     }
 }

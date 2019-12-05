@@ -17,29 +17,31 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.viewpager.widget.ViewPager;
 
+import com.example.duan1_vinh.FragmentPagerAdapter.ThongKeChiTietPagerAdapter;
 import com.example.duan1_vinh.R;
-import com.example.duan1_vinh.adapter.ThongKeChiTietAdapter;
 import com.example.duan1_vinh.dao.KhoanThuDAO;
 import com.example.duan1_vinh.model.KhoanThu;
+import com.google.android.material.tabs.TabLayout;
 
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ThongKeChiTietFragment extends Fragment {
-    private ListView listView;
+    private ThongKeChiTietModel thongKeChiTietModel;
+    TabLayout tabLayout;
+    ViewPager viewPager;
     private Context context;
-    private ThongKeChiTietAdapter thongKeChiTietAdapter;
-    private KhoanThuDAO khoanThuDAO;
+    ThongKeChiTietPagerAdapter thongKeChiTietPagerAdapter;
+
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.context = context;
     }
-
-    private ThongKeChiTietModel thongKeChiTietModel;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -52,23 +54,16 @@ public class ThongKeChiTietFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        listView = view.findViewById(R.id.lv_thongkechitiet);
+        tabLayout = view.findViewById(R.id.tl_tkct);
+        viewPager = view.findViewById(R.id.vp_tkct);
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        khoanThuDAO = new KhoanThuDAO(context);
-        List<KhoanThu> list = new ArrayList<>();
-        try {
-            list = khoanThuDAO.listKhoanThu();
-        } catch (ParseException e) {
-            e.printStackTrace();
-            Toast.makeText(context, e.toString(), Toast.LENGTH_SHORT).show();
-        }
-        thongKeChiTietAdapter = new ThongKeChiTietAdapter(context, list);
-        listView.setAdapter(thongKeChiTietAdapter);
-
+        thongKeChiTietPagerAdapter = new ThongKeChiTietPagerAdapter(getActivity().getSupportFragmentManager());
+        viewPager.setAdapter(thongKeChiTietPagerAdapter);
+        tabLayout.setupWithViewPager(viewPager);
 
     }
 }
