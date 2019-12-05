@@ -1,4 +1,4 @@
-package com.example.duan1_vinh.ui.CaiDat;
+package com.example.duan1_vinh.ui.ThongKeChiTiet;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -10,7 +10,7 @@ public class CaiDatViewModel extends ViewModel {
 
     public CaiDatViewModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is tools fragment");
+        mText.setValue("This is share fragment");
     }
 
     public LiveData<String> getText() {

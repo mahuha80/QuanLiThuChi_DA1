@@ -11,8 +11,8 @@
     <string name="menu_home">Biều đồ thống kê</string>
     <string name="menu_gallery">Thêm khoản thu</string>
     <string name="menu_slideshow">Thêm khoản chi</string>
-    <string name="menu_tools">Thống kê chi tiết</string>
-    <string name="menu_share">Cài đặt</string>
+    <string name="menu_tools">Cài đặt</string>
+    <string name="menu_share">Thống kê chi tiêt</string>
     <string name="menu_send">Về chúng tôi</string>
     <string name="menu_branch">Quản lí nhóm</string>
     <string name="slogan"><![CDATA[Ứng dụng quản lí chi tiêu cho bạn <3]]></string>

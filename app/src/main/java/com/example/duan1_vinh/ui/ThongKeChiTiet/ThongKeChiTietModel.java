@@ -4,13 +4,13 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-public class ThongKeChiTietViewModel extends ViewModel {
+public class ThongKeChiTietModel extends ViewModel {
 
     private MutableLiveData<String> mText;
 
-    public ThongKeChiTietViewModel() {
+    public ThongKeChiTietModel() {
         mText = new MutableLiveData<>();
-        mText.setValue("This is share fragment");
+        mText.setValue("This is tools fragment");
     }
 
     public LiveData<String> getText() {

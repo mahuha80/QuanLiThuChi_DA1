@@ -10,11 +10,14 @@ import android.widget.TextView;
 import com.example.duan1_vinh.R;
 import com.example.duan1_vinh.model.KhoanThu;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class ThongKeChiTietAdapter extends BaseAdapter {
     private Context context;
     private List<KhoanThu> list;
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+
 
     public ThongKeChiTietAdapter(Context context, List<KhoanThu> list) {
         this.context = context;
@@ -38,8 +41,23 @@ public class ThongKeChiTietAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        View view = LayoutInflater.from(context).inflate(R.layout.lv_thongkechitiet, parent, false);
-        return view;
+        ThongKeChiTietHolder thongKeChiTietHolder = null;
+        if (convertView == null) {
+            convertView=LayoutInflater.from(context).inflate(R.layout.lv_thongkechitiet,parent,false);
+            thongKeChiTietHolder = new ThongKeChiTietHolder();
+            thongKeChiTietHolder.tvLoai = convertView.findViewById(R.id.tvLoai_lv);
+            thongKeChiTietHolder.tvNote = convertView.findViewById(R.id.tvGhiChu_lv);
+            thongKeChiTietHolder.tvSoTien = convertView.findViewById(R.id.tvSoTien_lv);
+            thongKeChiTietHolder.tvTime = convertView.findViewById(R.id.tvNgay_lv);
+            convertView.setTag(thongKeChiTietHolder);
+        } else {
+            thongKeChiTietHolder = (ThongKeChiTietHolder) convertView.getTag();
+        }
+        thongKeChiTietHolder.tvTime.setText(simpleDateFormat.format(list.get(position).getNgaygio()));
+        thongKeChiTietHolder.tvSoTien.setText(list.get(position).getSotien() + "");
+        thongKeChiTietHolder.tvNote.setText(list.get(position).getGhichu());
+        thongKeChiTietHolder.tvLoai.setText(list.get(position).getLoaiThu()+"");
+        return convertView;
     }
 
     public class ThongKeChiTietHolder {
