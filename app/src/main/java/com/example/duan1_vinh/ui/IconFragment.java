@@ -62,7 +62,7 @@ public class IconFragment extends Fragment {
                                 circleImageViewArrayList.get(i).setBorderWidth(0);
                             }
                         }
-                        circleImageView.setBorderColor(getResources().getColor(R.color.design_default_color_primary));
+                        circleImageView.setBorderColor(getResources().getColor(R.color.color_selected));
                         circleImageView.setBorderWidth(10);
                         circleImageView.setLayerType(View.LAYER_TYPE_HARDWARE, null);
                         isChecked = true;

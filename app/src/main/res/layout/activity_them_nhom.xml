@@ -31,7 +31,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_margin="8dp"
-            android:src="@drawable/add" />
+            android:src="@drawable/iconadd" />
 
         <EditText
             android:layout_width="match_parent"
@@ -49,16 +49,13 @@
         android:layout_marginBottom="8dp"
         android:id="@+id/tl_themnhom_activity"
         android:layout_gravity="center"
-        app:tabIndicatorColor="#ff0000">
+        app:tabIndicatorColor="#673AB7">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
 
-        <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
     </com.google.android.material.tabs.TabLayout>
 
     <androidx.viewpager.widget.ViewPager

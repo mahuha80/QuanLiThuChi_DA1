@@ -6,4 +6,5 @@
     <color name="white">#fff</color>
     <color name="orange">#FF5722</color>
     <color name="background">#F44336</color>
+    <color name="color_selected">#673AB7</color>
 </resources>
