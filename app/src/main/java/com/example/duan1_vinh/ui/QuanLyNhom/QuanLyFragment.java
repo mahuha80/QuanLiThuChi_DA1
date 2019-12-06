@@ -12,8 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.duan1_vinh.FragmentPagerAdapter.QuanLyNhomPagerAdapter;
 import com.example.duan1_vinh.R;
-import com.example.duan1_vinh.ui.FragmentPagerAdapter.QuanLyNhomPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 public class QuanLyFragment extends Fragment {

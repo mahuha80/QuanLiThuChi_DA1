@@ -7,17 +7,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.duan1_vinh.FragmentPagerAdapter.ThongKePagerAdapter;
 import com.example.duan1_vinh.R;
 import com.example.duan1_vinh.dao.KhoanChiDAO;
 import com.example.duan1_vinh.dao.KhoanThuDAO;
-import com.example.duan1_vinh.ui.FragmentPagerAdapter.ThongKePagerAdapter;
-import com.example.duan1_vinh.ui.MainActivity;
 import com.google.android.material.tabs.TabLayout;
 
 public class ThongKeFragment extends Fragment {
@@ -48,12 +47,7 @@ public class ThongKeFragment extends Fragment {
         thongKePagerAdapter = new ThongKePagerAdapter(fragmentManager);
         viewPager.setAdapter(thongKePagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
-        khoanChiDAO = new KhoanChiDAO(context);
-        khoanThuDAO = new KhoanThuDAO(context);
-        double tong = khoanChiDAO.getTongKhoanChiTheoNgay();
-        double tong1 = khoanThuDAO.getTongKhoanThuTheoNgay();
-        Toast.makeText(context, tong + "", Toast.LENGTH_SHORT).show();
-        Toast.makeText(context, tong1 + "", Toast.LENGTH_SHORT).show();
+
 
 
     }

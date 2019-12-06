@@ -1,6 +1,5 @@
 package com.example.duan1_vinh.ui;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,12 +11,12 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.duan1_vinh.FragmentPagerAdapter.ThemNhomPagerAdapter;
 import com.example.duan1_vinh.R;
 import com.example.duan1_vinh.dao.LoaiChiDAO;
 import com.example.duan1_vinh.dao.LoaiThuDAO;
 import com.example.duan1_vinh.model.LoaiChi;
 import com.example.duan1_vinh.model.LoaiThu;
-import com.example.duan1_vinh.ui.FragmentPagerAdapter.ThemNhomPagerAdapter;
 import com.google.android.material.tabs.TabLayout;
 
 public class ThemNhomActivity extends AppCompatActivity {

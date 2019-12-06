@@ -1,4 +1,4 @@
-package com.example.duan1_vinh.ui.FragmentPagerAdapter;
+package com.example.duan1_vinh.FragmentPagerAdapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -21,6 +21,7 @@ public class ThongKePagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         if (position == 0) {
             return new ThongKeHomNayFragment();
+
         } else if (position == 1) {
             return new ThongKeTheoThangFragment();
         } else {

@@ -1,4 +1,4 @@
-package com.example.duan1_vinh.ui.FragmentPagerAdapter;
+package com.example.duan1_vinh.FragmentPagerAdapter;
 
 import android.view.View;
 
