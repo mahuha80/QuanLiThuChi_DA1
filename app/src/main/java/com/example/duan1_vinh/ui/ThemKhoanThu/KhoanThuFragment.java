@@ -52,7 +52,7 @@ public class KhoanThuFragment extends Fragment {
     EditText edKhoanTien, edGhiChu;
     LoaiThuSpinnerAdapter loaiThuSpinnerAdapter;
     KhoanThuDAO khoanThuDAO;
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -121,7 +121,7 @@ public class KhoanThuFragment extends Fragment {
         edKhoanTien = root.findViewById(R.id.edKhoanTien_khoanthu);
         edGhiChu = root.findViewById(R.id.edGhiChu_khoanthu);
         Date calendar = Calendar.getInstance().getTime();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         tvNgayGio.setText(simpleDateFormat.format(calendar));
         return root;
     }

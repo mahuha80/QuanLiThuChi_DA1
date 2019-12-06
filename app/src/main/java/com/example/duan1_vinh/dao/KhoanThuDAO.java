@@ -18,7 +18,7 @@ import java.util.List;
 public class KhoanThuDAO {
     public static final String TABLE_NAME = "KhoanThuTB";
     public static final String CREATE_TABLE = "CREATE TABLE KhoanThuTB (id integer primary key autoincrement,sotien double,ghichu text,tenloaithu text,ngaygio date )";
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
     DatabaseHelper databaseHelper;
     SQLiteDatabase db;
     private Context context;
@@ -59,5 +59,12 @@ public class KhoanThuDAO {
 
     public int removeKhoanThu(int id) {
         return db.delete(TABLE_NAME, "id=?", new String[]{String.valueOf(id)});
+    }
+    public double getTongKhoanThuTheoNgay() {
+        String query = "select sum(sotien) from KhoanThuTB where strftime('%Y %m %d',ngaygio)=strftime('%Y %m %d',date('now'))";
+        Cursor cursor = db.rawQuery(query, null);
+        cursor.moveToFirst();
+        double sum = cursor.getDouble(0);
+        return sum;
     }
 }

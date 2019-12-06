@@ -18,7 +18,7 @@ import java.util.Date;
 import java.util.List;
 
 public class KhoanChiDAO {
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
     DatabaseHelper databaseHelper;
     private Context context;
     SQLiteDatabase db;
@@ -61,6 +61,13 @@ public class KhoanChiDAO {
 
     public int removeKhoanChi(int id) {
         return db.delete(TABLE_NAME, "id=?", new String[]{String.valueOf(id)});
+    }
 
+    public double getTongKhoanChiTheoNgay() {
+        String query = "select sum(sotien) from KhoanChiTB where strftime('%Y %m %d',ngaygio)=strftime('%Y %m %d',date('now'))";
+        Cursor cursor = db.rawQuery(query, null);
+        cursor.moveToFirst();
+        double sum = cursor.getDouble(0);
+        return sum;
     }
 }
