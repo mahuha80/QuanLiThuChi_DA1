@@ -68,16 +68,24 @@ public class KhoanThuDAO {
         double sum = cursor.getDouble(0);
         return sum;
     }
-
     public List<Double> getTongTungThang() {
         List<Double> list = new ArrayList<>();
-        String query="SELECT sum(sotien) from KhoanThuTB where strftime('%m',ngaygio)=strftime('%m',12) ";
-        Cursor cursor=db.rawQuery(query,null);
-        cursor.moveToFirst();
-        Double tong=cursor.getDouble(0);
-        list.add(tong);
+        for (int i = 1; i <= 12; i++) {
+            String month;
+            if (i < 10) {
+                month = "0" + i;
+            } else {
+                month = i + "";
+            }
+            String sSql = "select sum(sotien) from KhoanThuTB where strftime('%m',ngaygio)=?";
+            Cursor cursor = db.rawQuery(sSql, new String[]{month});
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()){
+                Double tong=cursor.getDouble(0);
+                list.add(tong);
+                cursor.moveToNext();
+            }
+        }
         return list;
-
     }
-
 }
