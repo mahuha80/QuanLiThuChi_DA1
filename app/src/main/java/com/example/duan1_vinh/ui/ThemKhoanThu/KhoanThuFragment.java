@@ -136,7 +136,7 @@ public class KhoanThuFragment extends Fragment {
         spKhoanThu.setAdapter(loaiThuSpinnerAdapter);
         //set date picker dialog for img calendar'
         Calendar calendar = Calendar.getInstance();
-        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
         int month = calendar.get(Calendar.MONTH);
         int year = calendar.get(Calendar.YEAR);
         final DatePickerDialog datePickerDialog = new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
@@ -154,7 +154,7 @@ public class KhoanThuFragment extends Fragment {
                 } else {
                     dayTv = dayOfMonth + "";
                 }
-                tvNgayGio.setText(dayTv + "-" + monthTv + "-" + year);
+                tvNgayGio.setText(year + "-" + monthTv + "-" + dayTv);
             }
         }, year, month, day);
         imgCalendar.setOnClickListener(new View.OnClickListener() {

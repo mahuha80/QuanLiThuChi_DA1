@@ -7,9 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.example.duan1_vinh.database.DatabaseHelper;
 import com.example.duan1_vinh.model.KhoanChi;
-import com.example.duan1_vinh.model.KhoanThu;
 import com.example.duan1_vinh.model.LoaiChi;
-import com.example.duan1_vinh.model.LoaiThu;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -18,12 +16,12 @@ import java.util.Date;
 import java.util.List;
 
 public class KhoanChiDAO {
-    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-    DatabaseHelper databaseHelper;
-    private Context context;
-    SQLiteDatabase db;
     public static final String TABLE_NAME = "KhoanChiTB";
     public static final String CREATE_TABLE = "CREATE TABLE KhoanChiTB (id integer primary key autoincrement,sotien double,ghichu text,tenloaichi text,ngaygio date )";
+    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+    DatabaseHelper databaseHelper;
+    SQLiteDatabase db;
+    private Context context;
 
     public KhoanChiDAO(Context context) {
         this.context = context;
@@ -69,5 +67,26 @@ public class KhoanChiDAO {
         cursor.moveToFirst();
         double sum = cursor.getDouble(0);
         return sum;
+    }
+
+    public List<Double> getTongTungThang() {
+        List<Double> list = new ArrayList<>();
+        for (int i = 1; i <= 12; i++) {
+            String month;
+            if (i < 10) {
+                month = "0" + i;
+            } else {
+                month = i + "";
+            }
+            String sSql = "select sum(sotien) from KhoanChiTB where strftime('%m',ngaygio)=strftime('%m',?)";
+            Cursor cursor = db.rawQuery(sSql, new String[]{month});
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()){
+                Double tong=cursor.getDouble(0);
+                list.add(tong);
+                cursor.moveToNext();
+            }
+        }
+        return list;
     }
 }

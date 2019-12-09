@@ -48,9 +48,9 @@ public class KhoanThuDAO {
             String ghiChu = cursor.getString(cursor.getColumnIndex("ghichu"));
             String tenLoaiThu = cursor.getString(cursor.getColumnIndex("tenloaithu"));
             Date ngaygio = simpleDateFormat.parse(cursor.getString(cursor.getColumnIndex("ngaygio")));
-            int id=cursor.getInt(0);
+            int id = cursor.getInt(0);
             LoaiThu loaiThu = new LoaiThu(tenLoaiThu, 0);
-            KhoanThu khoanThu = new KhoanThu(id,soTien, ghiChu, loaiThu, ngaygio);
+            KhoanThu khoanThu = new KhoanThu(id, soTien, ghiChu, loaiThu, ngaygio);
             list.add(khoanThu);
             cursor.moveToNext();
         }
@@ -60,6 +60,7 @@ public class KhoanThuDAO {
     public int removeKhoanThu(int id) {
         return db.delete(TABLE_NAME, "id=?", new String[]{String.valueOf(id)});
     }
+
     public double getTongKhoanThuTheoNgay() {
         String query = "select sum(sotien) from KhoanThuTB where strftime('%Y %m %d',ngaygio)=strftime('%Y %m %d',date('now'))";
         Cursor cursor = db.rawQuery(query, null);
@@ -67,4 +68,16 @@ public class KhoanThuDAO {
         double sum = cursor.getDouble(0);
         return sum;
     }
+
+    public List<Double> getTongTungThang() {
+        List<Double> list = new ArrayList<>();
+        String query="SELECT sum(sotien) from KhoanThuTB where strftime('%m',ngaygio)=strftime('%m',12) ";
+        Cursor cursor=db.rawQuery(query,null);
+        cursor.moveToFirst();
+        Double tong=cursor.getDouble(0);
+        list.add(tong);
+        return list;
+
+    }
+
 }

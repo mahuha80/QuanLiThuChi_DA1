@@ -139,7 +139,7 @@ public class KhoanChiFragment extends Fragment {
                 } else {
                     dayTv = dayOfMonth + "";
                 }
-                tvNgayGio.setText(dayTv + "-" + monthTv + "-" + year);
+                tvNgayGio.setText(year + "-" + monthTv + "-" + dayTv);
             }
         }, year, month, day);
         imgCalendar.setOnClickListener(new View.OnClickListener() {
