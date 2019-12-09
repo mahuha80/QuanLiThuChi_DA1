@@ -78,7 +78,7 @@ public class KhoanChiDAO {
             } else {
                 month = i + "";
             }
-            String sSql = "select sum(sotien) from KhoanChiTB where strftime('%m',ngaygio)=strftime('%m',?)";
+            String sSql = "select sum(sotien) from KhoanChiTB where strftime('%m',ngaygio)=?";
             Cursor cursor = db.rawQuery(sSql, new String[]{month});
             cursor.moveToFirst();
             while (!cursor.isAfterLast()){

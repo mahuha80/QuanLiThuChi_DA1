@@ -60,7 +60,7 @@ public class ThongKeTheoNamFragment extends Fragment {
         List<Double> list=new ArrayList<>();
         list=khoanChiDAO.getTongTungThang();
         for(int i=0;i<list.size();i++){
-            textView.append(list.get(0)+"\n");
+            textView.append(list.get(i)+"\n");
         }
     }
 }
