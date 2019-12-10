@@ -16,8 +16,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
@@ -27,9 +27,7 @@ import com.example.duan1_vinh.adapter.LoaiChiSpinnerAdapter;
 import com.example.duan1_vinh.dao.KhoanChiDAO;
 import com.example.duan1_vinh.dao.LoaiChiDAO;
 import com.example.duan1_vinh.model.KhoanChi;
-import com.example.duan1_vinh.model.KhoanThu;
 import com.example.duan1_vinh.model.LoaiChi;
-import com.example.duan1_vinh.model.LoaiThu;
 import com.example.duan1_vinh.ui.ThemKhoanThu.KhoanThuViewModel;
 import com.google.android.material.tabs.TabLayout;
 
@@ -99,9 +97,10 @@ public class KhoanChiFragment extends Fragment {
                     }
                     if (result > 0) {
                         Toast.makeText(context, "ok", Toast.LENGTH_SHORT).show();
+                        clearForm();
 
                     } else {
-                        Toast.makeText(context, "an lol r", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "không thành công", Toast.LENGTH_SHORT).show();
                     }
 
                 }
@@ -109,6 +108,15 @@ public class KhoanChiFragment extends Fragment {
         }
         return super.onOptionsItemSelected(item);
 
+    }
+
+    private void clearForm() {
+        edKhoanTien.setText("");
+        edGhiChu.setText("");
+        Date calendar = Calendar.getInstance().getTime();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        tvNgayGio.setText(simpleDateFormat.format(calendar));
+        spKhoanChi.setSelection(0);
     }
 
     @Override

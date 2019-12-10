@@ -2,7 +2,6 @@ package com.example.duan1_vinh.ui.ThemKhoanThu;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -17,15 +16,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.NavigationUI;
 
 import com.example.duan1_vinh.R;
 import com.example.duan1_vinh.adapter.LoaiThuSpinnerAdapter;
@@ -33,8 +27,6 @@ import com.example.duan1_vinh.dao.KhoanThuDAO;
 import com.example.duan1_vinh.dao.LoaiThuDAO;
 import com.example.duan1_vinh.model.KhoanThu;
 import com.example.duan1_vinh.model.LoaiThu;
-import com.example.duan1_vinh.ui.BieuDoThongKe.ThongKeFragment;
-import com.example.duan1_vinh.ui.MainActivity;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -98,9 +90,10 @@ public class KhoanThuFragment extends Fragment {
                     }
                     if (result > 0) {
                         Toast.makeText(context, "ok", Toast.LENGTH_SHORT).show();
+                        clearForm();
 
                     } else {
-                        Toast.makeText(context, "an lol r", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context, "không thành công", Toast.LENGTH_SHORT).show();
                     }
 
                 }
@@ -108,6 +101,15 @@ public class KhoanThuFragment extends Fragment {
         }
         return super.onOptionsItemSelected(item);
 
+    }
+
+    private void clearForm() {
+        edKhoanTien.setText("");
+        edGhiChu.setText("");
+        Date calendar = Calendar.getInstance().getTime();
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        tvNgayGio.setText(simpleDateFormat.format(calendar));
+        spKhoanThu.setSelection(0);
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,

@@ -1,24 +1,16 @@
 package com.example.duan1_vinh.ui.QuanLyNhom;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -32,8 +24,6 @@ import com.example.duan1_vinh.ui.ThemNhomActivity;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.xml.transform.Result;
 
 public class ChiTieuFragment extends Fragment {
     ListView listView;
@@ -87,6 +77,14 @@ public class ChiTieuFragment extends Fragment {
                 startActivity(intent);
             }
         });
+//        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                Intent intent=new Intent(getActivity(),ThemNhomActivity.class);
+//                intent.putExtra("sualoaichi","suachi");
+//                startActivity(intent);
+//            }
+//        });
     }
 
     private void setAdapterForListView() {
