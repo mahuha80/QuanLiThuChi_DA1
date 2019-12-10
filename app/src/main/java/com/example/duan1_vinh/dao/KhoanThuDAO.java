@@ -68,6 +68,13 @@ public class KhoanThuDAO {
         double sum = cursor.getDouble(0);
         return sum;
     }
+    public double getTongThangHienTai(String month){
+        String query = "select sum(sotien) from KhoanThuTB where strftime('%m',ngaygio)=?";
+        Cursor cursor = db.rawQuery(query, new String[]{month});
+        cursor.moveToFirst();
+        double sum = cursor.getDouble(0);
+        return sum;
+    }
 
     public List<Double> getTongTungThang() {
         List<Double> list = new ArrayList<>();

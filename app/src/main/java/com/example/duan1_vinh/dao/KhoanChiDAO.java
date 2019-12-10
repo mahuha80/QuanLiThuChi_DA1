@@ -89,4 +89,11 @@ public class KhoanChiDAO {
         }
         return list;
     }
+    public double getTongThangHienTai(String month){
+        String query = "select sum(sotien) from KhoanChiTB where strftime('%m',ngaygio)=?";
+        Cursor cursor = db.rawQuery(query, new String[]{month});
+        cursor.moveToFirst();
+        double sum = cursor.getDouble(0);
+        return sum;
+    }
 }

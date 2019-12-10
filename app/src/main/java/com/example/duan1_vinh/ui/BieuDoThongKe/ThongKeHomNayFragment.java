@@ -45,7 +45,7 @@ public class ThongKeHomNayFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        anyChartView=view.findViewById(R.id.aCV_bdtk);
+        anyChartView = view.findViewById(R.id.aCV_bdtk);
     }
 
     @Override
@@ -53,19 +53,24 @@ public class ThongKeHomNayFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         khoanChiDAO = new KhoanChiDAO(context);
         khoanThuDAO = new KhoanThuDAO(context);
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
         double tongKhoanChiTheoNgay = khoanChiDAO.getTongKhoanChiTheoNgay();
         double tongKhoanThuTheoNgay = khoanThuDAO.getTongKhoanThuTheoNgay();
         double tong = tongKhoanChiTheoNgay + tongKhoanThuTheoNgay;
         Pie pie = AnyChart.pie();
         List<DataEntry> list = new ArrayList<>();
-        list.add(new ValueDataEntry("KHOẢN CHI", (tongKhoanChiTheoNgay/tong)*100));
-        list.add(new ValueDataEntry("KHOẢN THU", (tongKhoanThuTheoNgay/tong)*100));
+        list.add(new ValueDataEntry("KHOẢN CHI", (tongKhoanChiTheoNgay / tong) * 100));
+        list.add(new ValueDataEntry("KHOẢN THU", (tongKhoanThuTheoNgay / tong) * 100));
         pie.title("TỈ LỆ PHẦN TRĂM THU CHI HÔM NAY");
         pie.title().fontColor(CalendarContract.Colors.ACCOUNT_TYPE);
         pie.data(list);
 
         anyChartView.setChart(pie);
-
-
     }
 }

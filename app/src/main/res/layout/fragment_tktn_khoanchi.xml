@@ -4,13 +4,9 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tl_tktn"
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/bc_khoanchi_tktn"
         android:layout_width="match_parent"
-        android:layout_height="30dp" />
+        android:layout_height="match_parent" />
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/vp_tktn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
 </LinearLayout>
