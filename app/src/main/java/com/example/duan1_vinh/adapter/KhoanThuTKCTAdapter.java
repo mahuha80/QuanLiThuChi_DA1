@@ -63,7 +63,7 @@ public class KhoanThuTKCTAdapter extends BaseAdapter {
         }
         thongKeChiTietHolder.tvTime.setText(simpleDateFormat.format(list.get(position).getNgaygio()));
         thongKeChiTietHolder.tvSoTien.setText(list.get(position).getSotien() + "");
-        thongKeChiTietHolder.tvNote.setText("");
+        thongKeChiTietHolder.tvNote.setText(list.get(position).getGhichu()+"");
         thongKeChiTietHolder.tvLoai.setText(list.get(position).getLoaiThu() + "");
         final AlertDialog.Builder aleart = new AlertDialog.Builder(context);
         aleart.setTitle("Bạn có muốn xóa khoản thu này ?");

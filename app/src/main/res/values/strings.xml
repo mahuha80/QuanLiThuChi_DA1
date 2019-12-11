@@ -16,6 +16,7 @@
     <string name="menu_send">Về chúng tôi</string>
     <string name="menu_branch">Quản lí nhóm</string>
     <string name="slogan"><![CDATA[Ứng dụng quản lí chi tiêu cho bạn <3]]></string>
+    <string name="them_nhom">Thêm nhóm</string>
     <array name="color">
         <item>C#FF6633</item>
         <item>C#FFB399</item>
