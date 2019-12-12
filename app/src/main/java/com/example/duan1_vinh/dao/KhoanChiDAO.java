@@ -54,6 +54,7 @@ public class KhoanChiDAO {
             list.add(khoanChi);
             cursor.moveToNext();
         }
+        cursor.close();
         return list;
     }
 
@@ -66,6 +67,7 @@ public class KhoanChiDAO {
         Cursor cursor = db.rawQuery(query, null);
         cursor.moveToFirst();
         double sum = cursor.getDouble(0);
+        cursor.close();
         return sum;
     }
 
@@ -86,6 +88,7 @@ public class KhoanChiDAO {
                 list.add(tong);
                 cursor.moveToNext();
             }
+            cursor.close();
         }
         return list;
     }
@@ -94,6 +97,10 @@ public class KhoanChiDAO {
         Cursor cursor = db.rawQuery(query, new String[]{month});
         cursor.moveToFirst();
         double sum = cursor.getDouble(0);
+        cursor.close();
         return sum;
+    }
+    public void closeDB(){
+        databaseHelper.close();
     }
 }

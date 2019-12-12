@@ -47,6 +47,13 @@ public class KhoanThuFragment extends Fragment {
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        khoanThuDAO.closeDB();
+        loaiThuDAO.closeDB();
+    }
+
+    @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.context = context;

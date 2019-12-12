@@ -30,6 +30,13 @@ public class ThemNhomActivity extends AppCompatActivity {
     LoaiThuDAO loaiThuDAO;
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        loaiThuDAO.closeDB();
+        loaiChiDAO.closeDB();
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_them_nhom);

@@ -31,7 +31,11 @@ public class ChiTieuFragment extends Fragment {
     LoaiChiDAO loaiChiDAO;
     List<LoaiChi> loaiChiList;
     ChiTieuAdapter chiTieuAdapter;
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        loaiChiDAO.closeDB();
+    }
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);

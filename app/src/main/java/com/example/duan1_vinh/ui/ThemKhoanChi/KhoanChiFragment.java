@@ -48,9 +48,15 @@ public class KhoanChiFragment extends Fragment {
     ImageView imgCalendar;
     EditText edKhoanTien, edGhiChu;
     LoaiChiSpinnerAdapter loaiChiSpinnerAdapter;
-    ;
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
     private KhoanChiViewModel khoanChiViewModel;
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        khoanChiDAO.closeDB();
+        loaiChiDao.closeDB();
+    }
 
     @Override
     public void onAttach(@NonNull Context context) {

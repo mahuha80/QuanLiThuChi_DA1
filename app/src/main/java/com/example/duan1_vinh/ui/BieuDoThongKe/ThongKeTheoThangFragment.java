@@ -29,7 +29,12 @@ public class ThongKeTheoThangFragment extends Fragment {
     KhoanThuDAO khoanThuDAO;
     KhoanChiDAO khoanChiDAO;
     private Context context;
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        khoanThuDAO.closeDB();
+        khoanChiDAO.closeDB();
+    }
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);

@@ -41,9 +41,13 @@ public class LoaiChiDAO {
             loaiChiList.add(loaiChi);
             cursor.moveToNext();
         }
+        cursor.close();
         return loaiChiList;
     }
     public int deleteLoaiChi(String tenloaichi){
         return db.delete(TABLE_NAME,"tenloaichi=?",new String[]{tenloaichi});
+    }
+    public void closeDB(){
+        databaseHelper.close();
     }
 }

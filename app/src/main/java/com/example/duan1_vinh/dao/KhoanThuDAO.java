@@ -54,6 +54,7 @@ public class KhoanThuDAO {
             list.add(khoanThu);
             cursor.moveToNext();
         }
+        cursor.close();
         return list;
     }
 
@@ -66,6 +67,7 @@ public class KhoanThuDAO {
         Cursor cursor = db.rawQuery(query, null);
         cursor.moveToFirst();
         double sum = cursor.getDouble(0);
+        cursor.close();
         return sum;
     }
     public double getTongThangHienTai(String month){
@@ -73,6 +75,7 @@ public class KhoanThuDAO {
         Cursor cursor = db.rawQuery(query, new String[]{month});
         cursor.moveToFirst();
         double sum = cursor.getDouble(0);
+        cursor.close();
         return sum;
     }
 
@@ -93,7 +96,11 @@ public class KhoanThuDAO {
                 list.add(tong);
                 cursor.moveToNext();
             }
+            cursor.close();
         }
         return list;
+    }
+    public void closeDB(){
+        databaseHelper.close();
     }
 }

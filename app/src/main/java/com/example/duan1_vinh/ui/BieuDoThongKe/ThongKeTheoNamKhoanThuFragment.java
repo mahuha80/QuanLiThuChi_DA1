@@ -26,7 +26,11 @@ public class ThongKeTheoNamKhoanThuFragment extends Fragment {
     BarChart barChart;
     Context context;
     KhoanThuDAO khoanThuDAO;
-
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        khoanThuDAO.closeDB();
+    }
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);

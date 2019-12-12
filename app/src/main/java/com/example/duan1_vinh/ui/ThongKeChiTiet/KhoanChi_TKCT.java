@@ -28,6 +28,12 @@ public class KhoanChi_TKCT extends Fragment {
     private KhoanChiDAO khoanChiDAO;
 
     @Override
+    public void onDestroy() {
+        super.onDestroy();
+        khoanChiDAO.closeDB();
+    }
+
+    @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         this.context = context;
