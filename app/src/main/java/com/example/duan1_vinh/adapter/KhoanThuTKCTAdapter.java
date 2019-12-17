@@ -67,7 +67,12 @@ public class KhoanThuTKCTAdapter extends BaseAdapter {
         thongKeChiTietHolder.tvLoai.setText(list.get(position).getLoaiThu() + "");
         final AlertDialog.Builder aleart = new AlertDialog.Builder(context);
         aleart.setTitle("Bạn có muốn xóa khoản thu này ?");
-        aleart.setNegativeButton("Huỷ", null);
+        aleart.setNegativeButton("Huỷ", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(context, list.get(position).getGhichu()+"", Toast.LENGTH_SHORT).show();
+            }
+        });
         aleart.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

@@ -85,12 +85,22 @@ public class KhoanThuFragment extends Fragment {
                 }
                 KhoanThu khoanThu = null;
                 long result = 0;
-                if (ngaygio.trim().equals("") && khoanTien.trim().equals("")) {
+                if (khoanTien.trim().equals("")) {
                     Toast.makeText(context, "Vui lòng điền đẩy đủ các trường ! ", Toast.LENGTH_SHORT).show();
+                    return false;
                 } else {
+                    double doubleSoTien=0;
                     try {
-                        khoanThu = new KhoanThu(Double.parseDouble(khoanTien), ghichu, loaiThu, simpleDateFormat.parse(ngaygio));
+                         doubleSoTien = Double.parseDouble(khoanTien);
+                    }catch (Exception e){
+                        Toast.makeText(context, "Vui lòng đúng định dạng tiền !", Toast.LENGTH_SHORT).show();
+                        return false;
+                    }
+                    try {
+                        khoanThu = new KhoanThu(doubleSoTien, ghichu, loaiThu, simpleDateFormat.parse(ngaygio));
                     } catch (ParseException e) {
+                        e.printStackTrace();
+                        Toast.makeText(context, e.toString()+"", Toast.LENGTH_SHORT).show();
                     }
                     try {
                         result = khoanThuDAO.insertKhoanThu(khoanThu);

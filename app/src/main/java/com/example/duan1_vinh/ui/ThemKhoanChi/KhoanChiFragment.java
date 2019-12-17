@@ -91,12 +91,22 @@ public class KhoanChiFragment extends Fragment {
                 }
                 KhoanChi khoanChi = null;
                 long result = 0;
-                if (ngaygio.trim().equals("") && khoanTien.trim().equals("")) {
+                if ( khoanTien.trim().equals("")) {
                     Toast.makeText(context, "Vui lòng điền đẩy đủ các trường ! ", Toast.LENGTH_SHORT).show();
+                    return false;
                 } else {
+                    double doubleSoTien=0;
+                    try{
+                        doubleSoTien=Double.parseDouble(khoanTien);
+                    }catch (Exception e){
+                        Toast.makeText(context, "Vui lòng đúng định dạng tiền !", Toast.LENGTH_SHORT).show();
+                        return false;
+                    }
                     try {
-                        khoanChi = new KhoanChi(Double.parseDouble(khoanTien), ghichu, loaiChi, simpleDateFormat.parse(ngaygio));
+                        khoanChi = new KhoanChi(doubleSoTien, ghichu, loaiChi, simpleDateFormat.parse(ngaygio));
                     } catch (ParseException e) {
+                        e.printStackTrace();
+                        Toast.makeText(context, "Vui lòng nhập đúng định dạng !", Toast.LENGTH_SHORT).show();
                     }
                     try {
                         result = khoanChiDAO.insertKhoanChi(khoanChi);

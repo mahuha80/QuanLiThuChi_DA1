@@ -13,9 +13,7 @@ import android.widget.Toast;
 
 import com.example.duan1_vinh.R;
 import com.example.duan1_vinh.dao.KhoanChiDAO;
-import com.example.duan1_vinh.dao.KhoanThuDAO;
 import com.example.duan1_vinh.model.KhoanChi;
-import com.example.duan1_vinh.model.KhoanThu;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -72,7 +70,7 @@ public class KhoanChiTKCTAdapter extends BaseAdapter {
         aleart.setNegativeButton("Huỷ", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(context, list.get(position).getSotien()+"", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, list.get(position).getGhichu()+"", Toast.LENGTH_SHORT).show();
             }
         });
         aleart.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
