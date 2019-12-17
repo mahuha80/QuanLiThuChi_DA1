@@ -2,17 +2,37 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-
-    <TextView
+    android:orientation="vertical"
+    android:gravity="center"
+    >
+    <ImageView
         android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:src="@drawable/star"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:text="Show some love, Rate 5 Starts"
+        android:layout_marginBottom="24dp"/>
+    <RatingBar
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Đang phát triển"
-        android:textAlignment="center"
-        android:textSize="30sp"
+        android:rating="5"
+        android:background="#fafafa"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="SUBMIT"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="78dp"
+        android:layout_marginRight="78dp"
         android:textStyle="bold"
-        android:fontFamily="@font/custom_font1"
-        android:textColor="#DF1010"/>
+        android:background="#2196F3"
+        android:textColor="#fff"/>
 
 </LinearLayout>
