@@ -56,7 +56,7 @@ public class ThongKeTheoNamKhoanChiFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        BarDataSet barDataSet = new BarDataSet(getAllList(), "DOANH THU TỪNG THÁNG CỦA CỬA HÀNG");
+        BarDataSet barDataSet = new BarDataSet(getAllList(), "KHOẢN CHI TỪNG THÁNG CỦA NGƯỜI DÙNG TRONG NĂM");
         barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
         BarData barData = new BarData(barDataSet);
         barChart.setData(barData);
