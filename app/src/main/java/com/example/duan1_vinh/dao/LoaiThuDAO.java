@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.duan1_vinh.database.DatabaseHelper;
 import com.example.duan1_vinh.model.LoaiThu;
@@ -22,6 +23,8 @@ public class LoaiThuDAO {
         this.context = context;
         databaseHelper = new DatabaseHelper(context);
         db = databaseHelper.getWritableDatabase();
+        Log.e("DATABASE", "open");
+
     }
 
     public long insertLoaiThu(LoaiThu loaiThu) {
@@ -50,7 +53,10 @@ public class LoaiThuDAO {
     public int deleteLoaiThu(String tenloaithu) {
         return db.delete(TABLE_NAME, "tenloaithu=?", new String[]{tenloaithu});
     }
-    public void closeDB(){
+
+    public void closeDB() {
         databaseHelper.close();
+        Log.e("DATABASE", "close");
+
     }
 }

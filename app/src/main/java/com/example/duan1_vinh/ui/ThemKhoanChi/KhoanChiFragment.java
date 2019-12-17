@@ -85,6 +85,10 @@ public class KhoanChiFragment extends Fragment {
                 String ghichu = edGhiChu.getText().toString();
                 String ngaygio = tvNgayGio.getText().toString();
                 LoaiChi loaiChi = (LoaiChi) spKhoanChi.getSelectedItem();
+                if(loaiChi==null){
+                    Toast.makeText(context, "Vui lòng thêm khoản chi để thực hiện thao tác này !", Toast.LENGTH_SHORT).show();
+                    return false;
+                }
                 KhoanChi khoanChi = null;
                 long result = 0;
                 if (ngaygio.trim().equals("") && khoanTien.trim().equals("")) {

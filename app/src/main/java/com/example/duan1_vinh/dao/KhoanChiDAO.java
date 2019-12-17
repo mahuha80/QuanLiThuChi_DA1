@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.duan1_vinh.database.DatabaseHelper;
 import com.example.duan1_vinh.model.KhoanChi;
@@ -27,6 +28,8 @@ public class KhoanChiDAO {
         this.context = context;
         databaseHelper = new DatabaseHelper(context);
         db = databaseHelper.getWritableDatabase();
+        Log.e("DATABASE","open");
+
     }
 
     public long insertKhoanChi(KhoanChi khoanChi) throws ParseException {
@@ -102,5 +105,7 @@ public class KhoanChiDAO {
     }
     public void closeDB(){
         databaseHelper.close();
+        Log.e("DATABASE","close");
+
     }
 }

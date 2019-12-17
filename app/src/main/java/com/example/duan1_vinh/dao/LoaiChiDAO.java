@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.duan1_vinh.database.DatabaseHelper;
 import com.example.duan1_vinh.model.LoaiChi;
@@ -22,6 +23,7 @@ public class LoaiChiDAO {
         this.context=context;
         databaseHelper = new DatabaseHelper(context);
         db = databaseHelper.getWritableDatabase();
+        Log.e("DATABASE","open");
     }
     public long insertLoaiChi(LoaiChi loaiChi){
         ContentValues contentValues=new ContentValues();
@@ -49,5 +51,7 @@ public class LoaiChiDAO {
     }
     public void closeDB(){
         databaseHelper.close();
+        Log.e("DATABASE","close");
+
     }
 }
