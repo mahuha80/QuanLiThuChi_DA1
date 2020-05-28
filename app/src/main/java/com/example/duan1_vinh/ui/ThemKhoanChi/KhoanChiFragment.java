@@ -2,7 +2,9 @@ package com.example.duan1_vinh.ui.ThemKhoanChi;
 
 import android.app.DatePickerDialog;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,16 +14,20 @@ import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.duan1_vinh.R;
 import com.example.duan1_vinh.adapter.LoaiChiSpinnerAdapter;
 import com.example.duan1_vinh.dao.KhoanChiDAO;
@@ -50,6 +56,8 @@ public class KhoanChiFragment extends Fragment {
     LoaiChiSpinnerAdapter loaiChiSpinnerAdapter;
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
     private KhoanChiViewModel khoanChiViewModel;
+    LottieAnimationView icDone;
+    LottieAnimationView icFail;
 
     @Override
     public void onDestroy() {
@@ -77,6 +85,7 @@ public class KhoanChiFragment extends Fragment {
         setHasOptionsMenu(true);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -85,20 +94,20 @@ public class KhoanChiFragment extends Fragment {
                 String ghichu = edGhiChu.getText().toString();
                 String ngaygio = tvNgayGio.getText().toString();
                 LoaiChi loaiChi = (LoaiChi) spKhoanChi.getSelectedItem();
-                if(loaiChi==null){
+                if (loaiChi == null) {
                     Toast.makeText(context, "Vui lòng thêm khoản chi để thực hiện thao tác này !", Toast.LENGTH_SHORT).show();
                     return false;
                 }
                 KhoanChi khoanChi = null;
                 long result = 0;
-                if ( khoanTien.trim().equals("")) {
+                if (khoanTien.trim().equals("")) {
                     Toast.makeText(context, "Vui lòng điền đẩy đủ các trường ! ", Toast.LENGTH_SHORT).show();
                     return false;
                 } else {
-                    double doubleSoTien=0;
-                    try{
-                        doubleSoTien=Double.parseDouble(khoanTien);
-                    }catch (Exception e){
+                    double doubleSoTien = 0;
+                    try {
+                        doubleSoTien = Double.parseDouble(khoanTien);
+                    } catch (Exception e) {
                         Toast.makeText(context, "Vui lòng đúng định dạng tiền !", Toast.LENGTH_SHORT).show();
                         return false;
                     }
@@ -116,11 +125,24 @@ public class KhoanChiFragment extends Fragment {
                         break;
                     }
                     if (result > 0) {
-                        Toast.makeText(context, "ok", Toast.LENGTH_SHORT).show();
                         clearForm();
+                        icDone.setVisibility(View.VISIBLE);
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                icDone.setVisibility(View.INVISIBLE);
+                            }
+                        }, 2000);
+
 
                     } else {
-                        Toast.makeText(context, "không thành công", Toast.LENGTH_SHORT).show();
+                        icFail.setVisibility(View.VISIBLE);
+                        new Handler().postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                icFail.setVisibility(View.INVISIBLE);
+                            }
+                        }, 2000);
                     }
 
                 }
@@ -190,6 +212,8 @@ public class KhoanChiFragment extends Fragment {
         imgCalendar = root.findViewById(R.id.calendar_khoanchi);
         edKhoanTien = root.findViewById(R.id.edKhoanTien_khoanchi);
         edGhiChu = root.findViewById(R.id.edGhiChu_khoanchi);
+        icDone = root.findViewById(R.id.icDone);
+        icFail = root.findViewById(R.id.icFail);
         Date calendar = Calendar.getInstance().getTime();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         tvNgayGio.setText(simpleDateFormat.format(calendar));
